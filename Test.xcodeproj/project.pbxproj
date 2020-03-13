@@ -10,12 +10,14 @@
 		21CB12D94D7F6B627279DA37 /* Pods_TestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6C8F278E8B4C9371591321 /* Pods_TestTests.framework */; };
 		581034796839D37F3AAD3570 /* Pods_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F915EBB0F519297D637547 /* Pods_Test.framework */; };
 		94F32B2864D34408CFE85AE4 /* Pods_Test_TestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B447024AC9D6FDF042E6A0F /* Pods_Test_TestUITests.framework */; };
+		EE058D60241C1568000E3FE0 /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE058D5F241C1568000E3FE0 /* WalletVC.swift */; };
+		EE058D62241C17E7000E3FE0 /* CellWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE058D61241C17E7000E3FE0 /* CellWallet.swift */; };
 		EE0DA04A241BA03600CEB957 /* UploadDocVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DA049241BA03600CEB957 /* UploadDocVC.swift */; };
-		EE38A9EA240A5ADF00E97C34 /* WaitingForDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9E9240A5ADF00E97C34 /* WaitingForDriverVC.swift */; };
+		EE38A9EA240A5ADF00E97C34 /* WaitingForCustomerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9E9240A5ADF00E97C34 /* WaitingForCustomerVC.swift */; };
 		EE38A9EC240AA14100E97C34 /* MyMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9EB240AA14100E97C34 /* MyMenuVC.swift */; };
 		EE38A9EE240AA20800E97C34 /* MyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9ED240AA20700E97C34 /* MyMenuCell.swift */; };
 		EE38A9F2240AA57900E97C34 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */; };
-		EE38A9F6240AC47E00E97C34 /* WriteReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9F5240AC47E00E97C34 /* WriteReviewVC.swift */; };
+		EE38A9F6240AC47E00E97C34 /* CompleteReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9F5240AC47E00E97C34 /* CompleteReviewVC.swift */; };
 		EE3AC76E240EDCDB00AD4779 /* museo700.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EE67719D240C321500DE8D25 /* museo700.ttf */; };
 		EE3AC76F240EDCE100AD4779 /* myriad.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EE67719E240C321C00DE8D25 /* myriad.ttf */; };
 		EE3AC770240EDCE300AD4779 /* helvetica.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EE67719C240C320C00DE8D25 /* helvetica.ttf */; };
@@ -75,13 +77,15 @@
 		C884E90C166C5041D2B211BD /* Pods-Test-TestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test-TestUITests.debug.xcconfig"; path = "Target Support Files/Pods-Test-TestUITests/Pods-Test-TestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CDA141284F75730EFF0F81E1 /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		D0F915EBB0F519297D637547 /* Pods_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE058D5F241C1568000E3FE0 /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
+		EE058D61241C17E7000E3FE0 /* CellWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWallet.swift; sourceTree = "<group>"; };
 		EE0DA049241BA03600CEB957 /* UploadDocVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadDocVC.swift; sourceTree = "<group>"; };
-		EE38A9E9240A5ADF00E97C34 /* WaitingForDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForDriverVC.swift; sourceTree = "<group>"; };
+		EE38A9E9240A5ADF00E97C34 /* WaitingForCustomerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForCustomerVC.swift; sourceTree = "<group>"; };
 		EE38A9EB240AA14100E97C34 /* MyMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuVC.swift; sourceTree = "<group>"; };
 		EE38A9ED240AA20700E97C34 /* MyMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
 		EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EE38A9F1240AA57900E97C34 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		EE38A9F5240AC47E00E97C34 /* WriteReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewVC.swift; sourceTree = "<group>"; };
+		EE38A9F5240AC47E00E97C34 /* CompleteReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteReviewVC.swift; sourceTree = "<group>"; };
 		EE40FC6B2413CA98002A5076 /* ModelMyRides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMyRides.swift; sourceTree = "<group>"; };
 		EE53D4C6241977CD00111C7D /* PickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewVC.swift; sourceTree = "<group>"; };
 		EE677197240C2E2600DE8D25 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
@@ -170,10 +174,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EE058D5E241C152D000E3FE0 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				EE058D5F241C1568000E3FE0 /* WalletVC.swift */,
+				EE058D61241C17E7000E3FE0 /* CellWallet.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		EE38A9E8240A5AB600E97C34 /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
-				EE38A9E9240A5ADF00E97C34 /* WaitingForDriverVC.swift */,
+				EE38A9E9240A5ADF00E97C34 /* WaitingForCustomerVC.swift */,
 			);
 			path = Waiting;
 			sourceTree = "<group>";
@@ -190,7 +203,7 @@
 		EE38A9F4240AC46400E97C34 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				EE38A9F5240AC47E00E97C34 /* WriteReviewVC.swift */,
+				EE38A9F5240AC47E00E97C34 /* CompleteReviewVC.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -362,6 +375,7 @@
 		EEE4963B24080BE600C0734B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EE058D5E241C152D000E3FE0 /* Wallet */,
 				EE38A9F3240AA90300E97C34 /* SideMenu */,
 				EE3A3CE0240A30B100AB7C61 /* Cab */,
 				EE3A3CDF240A309800AB7C61 /* MyRides */,
@@ -657,17 +671,18 @@
 				EE0DA04A241BA03600CEB957 /* UploadDocVC.swift in Sources */,
 				EEEC3A7224098E640036A75C /* CabVC.swift in Sources */,
 				EED8543D240556D900E225EE /* LoginVC.swift in Sources */,
-				EE38A9EA240A5ADF00E97C34 /* WaitingForDriverVC.swift in Sources */,
+				EE38A9EA240A5ADF00E97C34 /* WaitingForCustomerVC.swift in Sources */,
 				EE71EF182406C25D00B6028D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				EEE496342407F55900C0734B /* OTPVC.swift in Sources */,
 				EE38A9EC240AA14100E97C34 /* MyMenuVC.swift in Sources */,
 				EE38A9EE240AA20800E97C34 /* MyMenuCell.swift in Sources */,
 				EEE496382408050F00C0734B /* MessageConstant.swift in Sources */,
-				EE38A9F6240AC47E00E97C34 /* WriteReviewVC.swift in Sources */,
+				EE38A9F6240AC47E00E97C34 /* CompleteReviewVC.swift in Sources */,
 				EE71EF172406C25D00B6028D /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				EEE496362407FD7C00C0734B /* AppShareClass.swift in Sources */,
 				EED85439240556D900E225EE /* AppDelegate.swift in Sources */,
 				EE40FC6C2413CA98002A5076 /* ModelMyRides.swift in Sources */,
+				EE058D62241C17E7000E3FE0 /* CellWallet.swift in Sources */,
 				EE3AC770240EDCE300AD4779 /* helvetica.ttf in Sources */,
 				EE3AC76F240EDCE100AD4779 /* myriad.ttf in Sources */,
 				EE38A9F2240AA57900E97C34 /* SWRevealViewController.m in Sources */,
@@ -677,6 +692,7 @@
 				EE677198240C2E2600DE8D25 /* UserProfileVC.swift in Sources */,
 				EEE4964024082D6D00C0734B /* CellMyRides.swift in Sources */,
 				EE71EF1E2406DD6200B6028D /* customClass.swift in Sources */,
+				EE058D60241C1568000E3FE0 /* WalletVC.swift in Sources */,
 				EED8543B240556D900E225EE /* SceneDelegate.swift in Sources */,
 				EE53D4C7241977CD00111C7D /* PickerViewVC.swift in Sources */,
 			);

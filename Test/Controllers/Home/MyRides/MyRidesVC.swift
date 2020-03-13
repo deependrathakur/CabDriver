@@ -31,7 +31,7 @@ class MyRidesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, S
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.getBookingList()
-        button1.setTitle("UPCOMING", for: .normal)
+        button1.setTitle("UPGOING", for: .normal)
         button2.setTitle("COMPLETED", for: .normal)
         button3.setTitle("CANCLED", for: .normal)
         changeSegmentAction(sender: button1)

@@ -86,9 +86,8 @@ extension MyMenuVC{
     func ConfigureView(){
         tableSide.delegate = self
         tableSide.dataSource = self
-        arrImgOptions = [#imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "vehicleGray"),#imageLiteral(resourceName: "timeGray"),#imageLiteral(resourceName: "userGray")]
-        arrSelectedImgOptions = [#imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "time"),#imageLiteral(resourceName: "user")]
-        
+        arrImgOptions = [#imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "vehicleGray"),#imageLiteral(resourceName: "timeGray"),#imageLiteral(resourceName: "half-star"),#imageLiteral(resourceName: "carGray"),#imageLiteral(resourceName: "userGray")]
+        arrSelectedImgOptions = [#imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "time"),#imageLiteral(resourceName: "star"),#imageLiteral(resourceName: "car"),#imageLiteral(resourceName: "user")]
         tableSide.reloadData()
     }
 }
@@ -111,7 +110,7 @@ extension MyMenuVC{
             }
             cell.imgOption.image = arrImgOptions[indexPath.row]
             
-            let vcId = ["",cabVC,myRidesVC,userProfileVC]
+            let vcId = ["", cabVC, myRidesVC, walletVC, waitingForCustomerVC, userProfileVC]
             if  vcId[indexPath.row] == UserDefaults.standard.string(forKey: "vc") {
                 cell.imgOption.image = arrSelectedImgOptions[indexPath.row]
             }
@@ -133,8 +132,15 @@ extension MyMenuVC{
             setRevelVC(storyBoardID: homeStoryBoard, vc_id: myRidesVC, currentVC: self)
         }
         else if indexPath.row == 3 {
+            setRevelVC(storyBoardID: homeStoryBoard, vc_id: walletVC, currentVC: self)
+        }
+        else if indexPath.row == 4 {
+            setRevelVC(storyBoardID: homeStoryBoard, vc_id: waitingForCustomerVC, currentVC: self)
+        }
+        else if indexPath.row == 5 {
             setRevelVC(storyBoardID: homeStoryBoard, vc_id: userProfileVC, currentVC: self)
-        } else {
+        }
+        else {
             if let currentCV = UserDefaults.standard.string(forKey: "vc") {
                 setRevelVC(storyBoardID: homeStoryBoard, vc_id: currentCV, currentVC: self)
             }

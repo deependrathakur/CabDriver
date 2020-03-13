@@ -20,13 +20,4 @@ class MyMenuCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-//    override var isSelected: Bool {
-//        get {
-//            return super.isSelected
-//        }
-//        set {
-//            //do something
-//            super.isSelected = newValue
-//        }
-//    }
 }

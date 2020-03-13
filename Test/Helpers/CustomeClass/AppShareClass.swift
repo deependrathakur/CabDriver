@@ -28,14 +28,15 @@ let HomeNav = "HomeNav"
 //UIViewController name
 let myRidesVC = "MyRidesVC"
 let cabVC = "CabVC"
-let waitingForDriverVC = "WaitingForDriverVC"
-let writeReviewVC = "WriteReviewVC"
+let waitingForCustomerVC = "WaitingForCustomerVC"
+let completeReviewVC = "CompleteReviewVC"
 let userProfileVC = "UserProfileVC"
 let myMenuVC = "MyMenuVC"
-
+let walletVC = "WalletVC"
 //cell
 let myMenuCell = "MyMenuCell"
 let cellMyRides = "CellMyRides"
+let cellWallet = "CellWallet"
 
 func goToNextVC(storyBoardID: String, vc_id: String, currentVC: UIViewController) {
     let vc = UIStoryboard.init(name: storyBoardID, bundle: Bundle.main).instantiateViewController(withIdentifier: vc_id)

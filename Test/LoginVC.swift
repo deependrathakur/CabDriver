@@ -44,7 +44,7 @@ fileprivate extension LoginVC {
             self.txtPassword.shakeTextField()
         } else {
             self.indicator.isHidden = false
-            db.collection("user").getDocuments() { (querySnapshot, err) in
+            db.collection("driver").getDocuments() { (querySnapshot, err) in
                 var registeredUser = false
                 var dictUser = [String:Any]()
                 if let err = err {

@@ -69,7 +69,7 @@ fileprivate extension RegisterVC {
                 "name":self.txtFullName.text ?? ""
                 ] as [String : Any]
 
-            ref = db.collection("user").addDocument(data: dict) { err in
+            ref = db.collection("driver").addDocument(data: dict) { err in
                 self.indicator.isHidden = true
                 if let err = err {
                     print("Error adding document: \(err)")
@@ -80,10 +80,7 @@ fileprivate extension RegisterVC {
                     UserDefaults.standard.set(true, forKey: "isLogin")
                 }
             }
-        
-            let sb: UIStoryboard = UIStoryboard(name: homeStoryBoard, bundle:Bundle.main)
-            let vcNew = sb.instantiateViewController(withIdentifier: uploadDocVC) as? UINavigationController
-            UIApplication.shared.keyWindow?.rootViewController = vcNew
+            goToNextVC(storyBoardID: mainStoryBoard, vc_id: registerVC, currentVC: self)
         }
     }
 }

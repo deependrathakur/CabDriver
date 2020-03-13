@@ -172,6 +172,9 @@ PODS:
   - Firebase/Firestore (6.18.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.11.0)
+  - Firebase/Storage (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 3.5.0)
   - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (6.6.3):
     - FirebaseCoreDiagnostics (~> 1.2)
@@ -200,6 +203,10 @@ PODS:
     - nanopb (~> 0.3.901)
   - FirebaseFirestoreSwift (0.2):
     - FirebaseFirestore (>= 1.6.1, ~> 1.6)
+  - FirebaseStorage (3.5.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleDataTransport (4.0.1)
   - GoogleDataTransportCCTSupport (1.4.1):
     - GoogleDataTransport (~> 4.0)
@@ -233,6 +240,7 @@ PODS:
     - gRPC-Core/Interface (= 1.21.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
+  - GTMSessionFetcher/Core (1.3.1)
   - HCSStarRatingView (1.5)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
@@ -245,6 +253,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Firebase/Firestore
+  - Firebase/Storage
   - FirebaseFirestoreSwift
   - GoogleMaps
   - GooglePlacePicker
@@ -264,6 +273,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseFirestore
     - FirebaseFirestoreSwift
+    - FirebaseStorage
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleMaps
@@ -272,6 +282,7 @@ SPEC REPOS:
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - GTMSessionFetcher
     - HCSStarRatingView
     - leveldb-library
     - nanopb
@@ -288,6 +299,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseFirestore: a23d596ae3a8c13d3b8353b565d2adfb690f9032
   FirebaseFirestoreSwift: 0437bb10d83f8161a9131da1739998254c78fdf5
+  FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
   GoogleDataTransport: 653963cf5be60fb59cf051e070f0836fdc305f81
   GoogleDataTransportCCTSupport: 84e4d4bbab642f2e9d83ee65d78aca2b5527d314
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
@@ -296,10 +308,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: 6239a7199f440baf35e5553a6218da12c0cbb8d5
+PODFILE CHECKSUM: af2f0366ac96d20c937a8d82c34a0c3164a8c798
 
 COCOAPODS: 1.9.0

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
 
 class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -24,7 +26,7 @@ class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     fileprivate var imgPANCard = UIImage()
     fileprivate var imgProfilePhoto = UIImage()
     fileprivate var imgTouristPermit = UIImage()
-    
+    var storage = Storage.storage()
     fileprivate var forImage = ""
     
     override func viewDidLoad() {
@@ -37,6 +39,8 @@ class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePick
 //MARK: - Custome Method extension
 fileprivate extension UploadDocVC {
     func viewConfigure() {
+        storage = Storage.storage(url:"gs://cab7-84952.appspot.com")
+
         txtDrivingLicence.textFieldCorner(cornerRadius: 5)
         txtCommercialInsurance.textFieldCorner(cornerRadius: 5)
         txtRegistrationCertificate.textFieldCorner(cornerRadius: 5)
@@ -90,6 +94,25 @@ fileprivate extension UploadDocVC {
         } else if imgTouristPermit.imageIsNull() {
             showAlertVC(title: kAlertTitle, message: "Please select Tourist Permit", controller: self)
         } else {
+            var ref: DocumentReference? = nil
+
+//            
+//            let uploadTask = storage.putData(imgPANCard.pngData(), metadata: nil) { (metadata, error) in
+//              guard let metadata = metadata else {
+//                // Uh-oh, an error occurred!
+//                return
+//              }
+//              // Metadata contains file metadata such as size, content-type.
+//              let size = metadata.size
+//              // You can also access to download URL after upload.
+//              riversRef.downloadURL { (url, error) in
+//                guard let downloadURL = url else {
+//                  // Uh-oh, an error occurred!
+//                  return
+//                }
+//              }
+//            }
+//
             let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: myRidesVC) as? MyRidesVC
             self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -152,7 +175,6 @@ extension UploadDocVC {
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //  isFromImagePicker = true
         dismiss(animated: true)
     }
 }
