@@ -27,7 +27,7 @@ class LoginVC: UIViewController {
 extension LoginVC {
     override func viewWillAppear(_ animated: Bool) {
         self.indicator.isHidden = true
-        self.setNavigationRootStoryboard()
+        setNavigationRootStoryboard()
     }
 }
 
@@ -64,7 +64,7 @@ fileprivate extension LoginVC {
                     UserDefaults.standard.set(true, forKey: "isLogin")
                     dictUser["created"] = ""
                     UserDefaults.standard.set(dictUser, forKey: "userDetail")
-                    self.setNavigationRootStoryboard()
+                    setNavigationRootStoryboard()
                 } else {
                     self.indicator.isHidden = true
                     showAlertVC(title: kAlertTitle, message: "Please check your login detail", controller: self)
@@ -81,13 +81,5 @@ fileprivate extension LoginVC {
     @IBAction func forgotAction(sender: UIButton) {
         self.view.endEditing(true)
         goToNextVC(storyBoardID: mainStoryBoard, vc_id: otpVC, currentVC: self)
-    }
-    
-    func setNavigationRootStoryboard() {
-        if UserDefaults.standard.bool(forKey: "isLogin") as Bool == true {
-           let sb: UIStoryboard = UIStoryboard(name: homeStoryBoard, bundle:Bundle.main)
-            let vcNew = sb.instantiateViewController(withIdentifier: "HomeNav") as? UINavigationController
-            UIApplication.shared.keyWindow?.rootViewController = vcNew
-        }
     }
 }

@@ -95,7 +95,6 @@ fileprivate extension UploadDocVC {
             showAlertVC(title: kAlertTitle, message: "Please select Tourist Permit", controller: self)
         } else {
             var ref: DocumentReference? = nil
-
 //            
 //            let uploadTask = storage.putData(imgPANCard.pngData(), metadata: nil) { (metadata, error) in
 //              guard let metadata = metadata else {
@@ -113,8 +112,7 @@ fileprivate extension UploadDocVC {
 //              }
 //            }
 //
-            let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: myRidesVC) as? MyRidesVC
-            self.navigationController?.pushViewController(vc!, animated: true)
+            setNavigationRootStoryboard()
         }
     }
     

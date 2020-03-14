@@ -49,6 +49,7 @@ let kErrorUpload: String = "There is some error occurs in uploading please try a
 let RemoveAllServicess : String = "Are you sure you want to permanently remove all selected services?"
 let loginSuccess : String = "Login successfully done"
 let registerSuccess : String = "Registration successfully done"
+let WIP : String = "Under development."
 
 
 //MARK: - Alerts

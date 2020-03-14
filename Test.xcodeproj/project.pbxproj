@@ -17,7 +17,7 @@
 		EE38A9EC240AA14100E97C34 /* MyMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9EB240AA14100E97C34 /* MyMenuVC.swift */; };
 		EE38A9EE240AA20800E97C34 /* MyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9ED240AA20700E97C34 /* MyMenuCell.swift */; };
 		EE38A9F2240AA57900E97C34 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */; };
-		EE38A9F6240AC47E00E97C34 /* CompleteReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9F5240AC47E00E97C34 /* CompleteReviewVC.swift */; };
+		EE38A9F6240AC47E00E97C34 /* CompleteRideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9F5240AC47E00E97C34 /* CompleteRideVC.swift */; };
 		EE3AC76E240EDCDB00AD4779 /* museo700.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EE67719D240C321500DE8D25 /* museo700.ttf */; };
 		EE3AC76F240EDCE100AD4779 /* myriad.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EE67719E240C321C00DE8D25 /* myriad.ttf */; };
 		EE3AC770240EDCE300AD4779 /* helvetica.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EE67719C240C320C00DE8D25 /* helvetica.ttf */; };
@@ -85,7 +85,7 @@
 		EE38A9ED240AA20700E97C34 /* MyMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
 		EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EE38A9F1240AA57900E97C34 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		EE38A9F5240AC47E00E97C34 /* CompleteReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteReviewVC.swift; sourceTree = "<group>"; };
+		EE38A9F5240AC47E00E97C34 /* CompleteRideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRideVC.swift; sourceTree = "<group>"; };
 		EE40FC6B2413CA98002A5076 /* ModelMyRides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMyRides.swift; sourceTree = "<group>"; };
 		EE53D4C6241977CD00111C7D /* PickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewVC.swift; sourceTree = "<group>"; };
 		EE677197240C2E2600DE8D25 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		EE38A9F4240AC46400E97C34 /* Review */ = {
 			isa = PBXGroup;
 			children = (
-				EE38A9F5240AC47E00E97C34 /* CompleteReviewVC.swift */,
+				EE38A9F5240AC47E00E97C34 /* CompleteRideVC.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -677,7 +677,7 @@
 				EE38A9EC240AA14100E97C34 /* MyMenuVC.swift in Sources */,
 				EE38A9EE240AA20800E97C34 /* MyMenuCell.swift in Sources */,
 				EEE496382408050F00C0734B /* MessageConstant.swift in Sources */,
-				EE38A9F6240AC47E00E97C34 /* CompleteReviewVC.swift in Sources */,
+				EE38A9F6240AC47E00E97C34 /* CompleteRideVC.swift in Sources */,
 				EE71EF172406C25D00B6028D /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				EEE496362407FD7C00C0734B /* AppShareClass.swift in Sources */,
 				EED85439240556D900E225EE /* AppDelegate.swift in Sources */,

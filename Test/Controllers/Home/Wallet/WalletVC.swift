@@ -32,7 +32,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SW
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UserDefaults.standard.set(myRidesVC, forKey: "vc")
+        UserDefaults.standard.set(walletVC, forKey: "vc")
     }
 }
 
@@ -83,11 +83,24 @@ fileprivate extension WalletVC {
         }
     }
 }
+//MARK: - Button Method extension
+fileprivate extension WalletVC {
+    
+    @IBAction func NotificationAction(sender: UIButton) {
+        self.view.endEditing(true)
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
+     }
+    
+    @IBAction func WithdrowAction(sender: UIButton) {
+        self.view.endEditing(true)
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
+    }
+
+}
 
 //MARK: - Revel extension
 extension WalletVC {
     
-    // MARK: - ENSideMenu Delegate
     func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
         switch position {
             

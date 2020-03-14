@@ -80,7 +80,7 @@ fileprivate extension RegisterVC {
                     UserDefaults.standard.set(true, forKey: "isLogin")
                 }
             }
-            goToNextVC(storyBoardID: mainStoryBoard, vc_id: registerVC, currentVC: self)
+            goToNextVC(storyBoardID: mainStoryBoard, vc_id: uploadDocVC, currentVC: self)
         }
     }
 }

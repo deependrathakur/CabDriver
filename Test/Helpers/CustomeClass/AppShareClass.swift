@@ -29,7 +29,7 @@ let HomeNav = "HomeNav"
 let myRidesVC = "MyRidesVC"
 let cabVC = "CabVC"
 let waitingForCustomerVC = "WaitingForCustomerVC"
-let completeReviewVC = "CompleteReviewVC"
+let completeRideVC = "CompleteRideVC"
 let userProfileVC = "UserProfileVC"
 let myMenuVC = "MyMenuVC"
 let walletVC = "WalletVC"
@@ -147,4 +147,10 @@ func dictToStringKeyParam(dict: [String:Any], key: String) -> String {
 }
 
 
-
+func setNavigationRootStoryboard() {
+    if UserDefaults.standard.bool(forKey: "isLogin") as Bool == true {
+       let sb: UIStoryboard = UIStoryboard(name: homeStoryBoard, bundle:Bundle.main)
+        let vcNew = sb.instantiateViewController(withIdentifier: "HomeNav") as? UINavigationController
+        UIApplication.shared.keyWindow?.rootViewController = vcNew
+    }
+}

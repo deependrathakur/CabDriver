@@ -1,5 +1,5 @@
 //
-//  CompleteReviewVC.swift
+//  CompleteRideVC.swift
 //  Test
 //
 //  Created by Harshit on 29/02/20.
@@ -9,7 +9,7 @@
 import UIKit
 import HCSStarRatingView
 
-class CompleteReviewVC: UIViewController {
+class CompleteRideVC: UIViewController {
     @IBOutlet weak var txtPicupLocation:UITextField!
     @IBOutlet weak var txtDroupLocation:UITextField!
 
@@ -22,7 +22,7 @@ class CompleteReviewVC: UIViewController {
 }
 
 //MARK: - Button Method extension
-extension CompleteReviewVC {
+extension CompleteRideVC {
     
     @IBAction func backAction(sender: UIButton) {
         self.view.endEditing(true)

@@ -44,7 +44,15 @@ extension UserProfileVC {
 fileprivate extension UserProfileVC {
     
     @IBAction func updateUserDetilAction(sender: UIButton) {
-        showAlertVC(title: kAlertTitle, message: "Under development", controller: self)
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
+    }
+    
+    @IBAction func updateDocumentsAction(sender: UIButton) {
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
+    }
+    
+    @IBAction func NotificationAction(sender: UIButton) {
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
     }
 }
 // MARK: - ENSideMenu Delegate

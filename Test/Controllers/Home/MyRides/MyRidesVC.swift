@@ -74,8 +74,8 @@ extension MyRidesVC {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabVC) as? CabVC
-        self.navigationController?.pushViewController(vc!, animated: true)
+//        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabVC) as? CabVC
+//        self.navigationController?.pushViewController(vc!, animated: true)
     }
 }
 

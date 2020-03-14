@@ -37,7 +37,12 @@ extension WaitingForCustomerVC {
     
     @IBAction func CallAction(sender: UIButton) {
         self.view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
+    }
+    
+    @IBAction func RideAction(sender: UIButton) {
+        self.view.endEditing(true)
+        goToNextVC(storyBoardID: homeStoryBoard, vc_id: completeRideVC, currentVC: self)
     }
 }
 

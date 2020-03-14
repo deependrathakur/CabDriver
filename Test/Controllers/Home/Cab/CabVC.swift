@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import GooglePlaces
 import Firebase
+import GoogleMaps
 
 class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelegate, GMSAutocompleteViewControllerDelegate, PickerDelegate {
 
@@ -46,6 +47,7 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
         
         bookingDict = ["amount": "123",  "date":"","driveId": "123132",
                        "driverId": "0", "drop": "", "geopoint":  "", "km": "0", "pickup": "0",  "reviewComment": "",  "reviewStar": 3, "status": 3, "tax": "22"]
+        getDirections(enterdLocations: ["Indore", "Bhopal"])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +58,33 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
     func onSelectPicker(date: Date) {
         let a = getTimeFromTime(date: date)
         bookingDict["date"] = date
+    }
+    
+    func getDirections(enterdLocations:[String])  {
+        // array has the address strings
+        var locations = [MKPointAnnotation]()
+        for item in enterdLocations {
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(item, completionHandler: {(placemarks, error) -> Void in
+                if((error) != nil){
+                    print("Error", error)
+                }
+                if let placemark = placemarks?.first {
+
+                    let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+
+                    let dropPin = MKPointAnnotation()
+                    dropPin.coordinate = coordinates
+                    dropPin.title = item
+                    self.mapView.addAnnotation(dropPin)
+                    self.mapView.selectAnnotation( dropPin, animated: true)
+
+                    locations.append(dropPin)
+                    //add this if you want to show them all
+                    self.mapView.showAnnotations(locations, animated: true)
+                }
+            })
+        }
     }
 }
 
@@ -186,15 +215,15 @@ fileprivate extension CabVC {
         self.vwPopup.isHidden = true
      }
     
-    @IBAction func RideNowAction(sender: UIButton) {
-        self.view.endEditing(true)
-        bookingDict["ride"] = "now"
-        self.vwPopup.isHidden = false
-    }
-    
     @IBAction func AcceptAction(sender: UIButton) {
         self.view.endEditing(true)
         self.vwPopup.isHidden = true
+        setRevelVC(storyBoardID: homeStoryBoard, vc_id: waitingForCustomerVC, currentVC: self)
+    }
+    
+    @IBAction func AvailableBookingAction(sender: UIButton) {
+        self.view.endEditing(true)
+        self.vwPopup.isHidden = false
     }
     
     @IBAction func RejectAction(sender: UIButton) {
@@ -204,6 +233,10 @@ fileprivate extension CabVC {
     
     @IBAction func MenuAction(sender: UIButton) {
         self.view.endEditing(true)
+    }
+    
+    @IBAction func NotificationAction(sender: UIButton) {
+        showAlertVC(title: kAlertTitle, message: WIP, controller: self)
     }
 }
 
