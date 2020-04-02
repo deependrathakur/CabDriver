@@ -19,6 +19,7 @@ class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     @IBOutlet weak var txtProfilePhoto:UITextField!
     @IBOutlet weak var txtTouristPermit:UITextField!
     @IBOutlet weak var btnUpload:UIButton!
+    @IBOutlet weak var indicator:UIActivityIndicatorView!
     
     fileprivate var imgDrivingLicence = UIImage()
     fileprivate var imgCommercialInsurance = UIImage()
@@ -26,11 +27,17 @@ class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePick
     fileprivate var imgPANCard = UIImage()
     fileprivate var imgProfilePhoto = UIImage()
     fileprivate var imgTouristPermit = UIImage()
-    var storage = Storage.storage()
     fileprivate var forImage = ""
+    
+    var storageRef = Storage.storage().reference()
+    
+    let db = Firestore.firestore()
+    var userDict = [String:Any]()
+    var docDict = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.indicator.isHidden = true
         self.manageTextFieldColor()
         self.viewConfigure()
     }
@@ -39,8 +46,7 @@ class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePick
 //MARK: - Custome Method extension
 fileprivate extension UploadDocVC {
     func viewConfigure() {
-        storage = Storage.storage(url:"gs://cab7-84952.appspot.com")
-
+        //        storageRef = Storage.storage(url:"gs://cab7-84952.appspot.com")
         txtDrivingLicence.textFieldCorner(cornerRadius: 5)
         txtCommercialInsurance.textFieldCorner(cornerRadius: 5)
         txtRegistrationCertificate.textFieldCorner(cornerRadius: 5)
@@ -63,21 +69,10 @@ fileprivate extension UploadDocVC {
 fileprivate extension UploadDocVC {
     @IBAction func selectAction(sender: UIButton) {
         self.view.endEditing(true)
-        if sender.tag == 0 {
-            forImage = "0"
-        } else if sender.tag == 1 {
-            forImage = "1"
-        } else if sender.tag == 2 {
-            forImage = "2"
-        } else if sender.tag == 3 {
-            forImage = "3"
-        } else if sender.tag == 4 {
-            forImage = "4"
-        } else if sender.tag == 5 {
-            forImage = "5"
-        }
+        forImage = "\(sender.tag)"
         self.selectProfileImage()
     }
+    
     @IBAction func uploadAction(sender: UIButton) {
         self.view.endEditing(true)
         self.manageTextFieldColor()
@@ -95,27 +90,20 @@ fileprivate extension UploadDocVC {
             showAlertVC(title: kAlertTitle, message: "Please select Tourist Permit", controller: self)
         } else {
             var ref: DocumentReference? = nil
-//            
-//            let uploadTask = storage.putData(imgPANCard.pngData(), metadata: nil) { (metadata, error) in
-//              guard let metadata = metadata else {
-//                // Uh-oh, an error occurred!
-//                return
-//              }
-//              // Metadata contains file metadata such as size, content-type.
-//              let size = metadata.size
-//              // You can also access to download URL after upload.
-//              riversRef.downloadURL { (url, error) in
-//                guard let downloadURL = url else {
-//                  // Uh-oh, an error occurred!
-//                  return
-//                }
-//              }
-//            }
-//
+            userDict["documentFiles"] = docDict
+            ref = db.collection("driver").addDocument(data: userDict) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                    UserDefaults.standard.set("\(ref!.documentID)", forKey: "userId")
+                    UserDefaults.standard.set(self.userDict, forKey: "userDetail")
+                    UserDefaults.standard.set(true, forKey: "isLogin")
+                }
+            }
             setNavigationRootStoryboard()
         }
     }
-    
     @IBAction func backAction(sender: UIButton) {
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
@@ -139,7 +127,6 @@ extension UploadDocVC {
             }
         })
         let btn2 = UIAlertAction(title: "Photo Library", style: .default, handler: {(_ action: UIAlertAction) -> Void in
-            
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.allowsEditing = true;
@@ -154,19 +141,25 @@ extension UploadDocVC {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let newImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
-        
+        self.indicator.isHidden = false
         if forImage == "0" {
             self.imgDrivingLicence = newImage
+            docDict["driverLicence"] = uploading(imageName: "driverLicence", img: imgDrivingLicence) { (url) in }
         } else if forImage == "1" {
             self.imgCommercialInsurance = newImage
+            docDict["commercialInsurance"] = uploading(imageName: "commercialInsurance", img: imgCommercialInsurance) { (url) in }
         } else if forImage == "2" {
             self.imgRegistrationCertificate = newImage
+            docDict["certificateRegistration"] = uploading(imageName: "certificateRegistration", img: imgRegistrationCertificate) { (url) in }
         } else if forImage == "3" {
             self.imgPANCard = newImage
+            docDict["penCard"] = uploading(imageName: "penCard", img: imgPANCard) { (url) in }
         } else if forImage == "4" {
             self.imgProfilePhoto = newImage
+            docDict["profilePicture"] = uploading(imageName: "profilePicture", img: imgProfilePhoto) { (url) in }
         } else if forImage == "5" {
             self.imgTouristPermit = newImage
+            docDict["touristPermit"] = uploading(imageName: "touristPermit", img: imgTouristPermit) { (url) in }
         }
         self.manageTextFieldColor()
         picker.dismiss(animated: true)
@@ -174,5 +167,49 @@ extension UploadDocVC {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+    }
+}
+
+//MARK: - Upload image on firestore
+extension UploadDocVC {
+    func uploading(imageName: String, img : UIImage, completion: @escaping ((String) -> Void)) {
+        var strURL = ""
+        let keyName = imageName
+        let imageName = NSUUID().uuidString
+        let storeImage = (self.storageRef.child(imageName) as AnyObject).child(imageName)
+        if let uploadImageData = (img).pngData(){
+            if uploadImageData.count > 2000000 {
+                self.indicator.isHidden = true
+                dismiss(animated: true)
+                if forImage == "0" {
+                    self.imgDrivingLicence = UIImage()
+                } else if forImage == "1" {
+                    self.imgCommercialInsurance = UIImage()
+                } else if forImage == "2" {
+                    self.imgRegistrationCertificate = UIImage()
+                } else if forImage == "3" {
+                    self.imgPANCard = UIImage()
+                } else if forImage == "4" {
+                    self.imgProfilePhoto = UIImage()
+                } else if forImage == "5" {
+                    self.imgTouristPermit = UIImage()
+                }
+                self.manageTextFieldColor()
+                showAlertVC(title: kAlertTitle, message: "Please select small file", controller: self)
+                return
+            }
+            storeImage.putData(uploadImageData, metadata: nil, completion: { (metaData, error) in
+                storeImage.downloadURL(completion: { (url, error) in
+                    if let urlText = url?.absoluteString {
+                        strURL = urlText
+                        self.docDict[keyName] = strURL
+                        self.indicator.isHidden = true
+                        completion(strURL)
+                    } else {
+                        self.indicator.isHidden = true
+                    }
+                })
+            })
+        }
     }
 }
