@@ -64,10 +64,10 @@ extension MyRidesVC {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellMyRides, for: indexPath as IndexPath) as? CellMyRides {
             let object = self.arrBooking[indexPath.row]
-            cell.lblPicLocation.text = object.pickup
-            cell.lblDropLocation.text = object.drop
+            cell.lblPicLocation.text = object.pickupAddress
+            cell.lblDropLocation.text = object.dropAddress
             cell.lblPrice.text = "$" + object.amount
-            cell.lblDate.text = object.date
+            cell.lblDate.text = object.createdData
             return cell
         }
         return UITableViewCell()

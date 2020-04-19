@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import GooglePlaces
+
 //colors
 let appColor = #colorLiteral(red: 0.2235200405, green: 0.04756128043, blue: 0.06039769202, alpha: 1)
 let grayColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -153,4 +155,97 @@ func setNavigationRootStoryboard() {
         let vcNew = sb.instantiateViewController(withIdentifier: "HomeNav") as? UINavigationController
         UIApplication.shared.keyWindow?.rootViewController = vcNew
     }
+}
+
+func dictToBoolKeyParam(dict: [String:Any], key: String) -> Bool {
+    if let value = dict[key] as? Bool {
+        return value
+    } else if let value = dict[key] as? Int {
+        return (value == 0) ? false : true
+    } else if let value = dict[key] as? String {
+       return (value == "0") ? false : true
+    } else {
+        return false
+    }
+}
+
+func dictToDoubleKeyParam(dict: [String:Any], key: String) -> Double {
+    if let value = dict[key] as? Double {
+        return value
+    } else if let value = dict[key] as? Int {
+        return Double(value)
+    } else if let value = dict[key] as? String {
+        return Double(value) ?? 00.00
+    } else {
+        return 0.0
+    }
+}
+
+func dictToIntKeyParam(dict: [String:Any], key: String) -> Int {
+    if let value = dict[key] as? Int {
+        return value
+    } else if let value = dict[key] as? String {
+        return Int(value) ?? 0
+    } else {
+        return 0
+    }
+}
+func getCordinate(dict: [String : Any], key: String) -> CLLocationCoordinate2D {
+    var value = CLLocationCoordinate2D()
+    if let obj = dict[key] as? CLLocationCoordinate2D {
+        value = obj
+    } else if let obj = dict[key] as? String {
+        let arrEndPoint =  obj.components(separatedBy: ",")
+        if arrEndPoint.count > 1 {
+            let lat = Double(arrEndPoint[0]) ?? 22.7195687
+            let long = Double(arrEndPoint[1]) ?? 75.8577258
+            value.latitude = lat
+            value.longitude = long
+        } else {
+            let lat =  22.7195687
+            let long = 75.8577258
+            value.latitude = lat
+            value.longitude = long
+        }
+    }
+    return value
+}
+
+  //image compression
+func resizeImage(image: UIImage) -> UIImage {
+    var actualHeight: Float = Float(image.size.height)
+    var actualWidth: Float = Float(image.size.width)
+    let maxHeight: Float = 300.0
+    let maxWidth: Float = 400.0
+    var imgRatio: Float = actualWidth / actualHeight
+    let maxRatio: Float = maxWidth / maxHeight
+    let compressionQuality: Float = 0.5
+    //50 percent compression
+
+    if actualHeight > maxHeight || actualWidth > maxWidth {
+        if imgRatio < maxRatio {
+            //adjust width according to maxHeight
+            imgRatio = maxHeight / actualHeight
+            actualWidth = imgRatio * actualWidth
+            actualHeight = maxHeight
+        }
+        else if imgRatio > maxRatio {
+            //adjust height according to maxWidth
+            imgRatio = maxWidth / actualWidth
+            actualHeight = imgRatio * actualHeight
+            actualWidth = maxWidth
+        }
+        else {
+            actualHeight = maxHeight
+            actualWidth = maxWidth
+        }
+    }
+
+    let rect = CGRect(x: 0.0, y: 0.0, width: CGFloat(actualWidth), height: CGFloat(actualHeight))
+    UIGraphicsBeginImageContext(rect.size)
+    image.draw(in: rect)
+    let img = UIGraphicsGetImageFromCurrentImageContext()
+    let imageData = img!.jpegData(compressionQuality: CGFloat(compressionQuality))
+    UIGraphicsEndImageContext()
+    return UIImage(data: imageData!)!
 }

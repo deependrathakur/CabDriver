@@ -90,7 +90,7 @@ fileprivate extension UploadDocVC {
             showAlertVC(title: kAlertTitle, message: "Please select Tourist Permit", controller: self)
         } else {
             var ref: DocumentReference? = nil
-            userDict["documentFiles"] = docDict
+            userDict["documentFile"] = docDict
             ref = db.collection("driver").addDocument(data: userDict) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
@@ -99,9 +99,10 @@ fileprivate extension UploadDocVC {
                     UserDefaults.standard.set("\(ref!.documentID)", forKey: "userId")
                     UserDefaults.standard.set(self.userDict, forKey: "userDetail")
                     UserDefaults.standard.set(true, forKey: "isLogin")
+                    self.db.collection("driver").document("\(ref!.documentID)").updateData(["id":"\(ref!.documentID)"])
+                    setNavigationRootStoryboard()
                 }
             }
-            setNavigationRootStoryboard()
         }
     }
     @IBAction func backAction(sender: UIButton) {
@@ -140,7 +141,7 @@ extension UploadDocVC {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let newImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+        let newImage = resizeImage(image:(info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!)
         self.indicator.isHidden = false
         if forImage == "0" {
             self.imgDrivingLicence = newImage

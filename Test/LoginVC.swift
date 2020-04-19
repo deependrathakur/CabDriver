@@ -63,6 +63,7 @@ fileprivate extension LoginVC {
                     self.indicator.isHidden = true
                     UserDefaults.standard.set(true, forKey: "isLogin")
                     dictUser["created"] = ""
+                    UserDefaults.standard.set(dictUser["id"] ?? "", forKey: "userId")
                     UserDefaults.standard.set(dictUser, forKey: "userDetail")
                     setNavigationRootStoryboard()
                 } else {
