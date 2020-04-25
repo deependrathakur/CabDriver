@@ -17,6 +17,9 @@ let grayColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.60
 let whiteColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 let blackColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 
+var modelUserDetail:ModelUserDetail?
+var DictUserDetails:[String:Any]?
+
 //storyboardName
 let mainStoryBoard = "Main"
 //UIViewController name
@@ -24,6 +27,7 @@ let registerVC = "RegisterVC"
 let loginVC = "LoginVC"
 let otpVC = "OTPVC"
 let uploadDocVC = "UploadDocVC"
+let cabDetailViewController = "CabDetailViewController"
 
 let homeStoryBoard = "Home"
 let HomeNav = "HomeNav"
@@ -39,6 +43,8 @@ let walletVC = "WalletVC"
 let myMenuCell = "MyMenuCell"
 let cellMyRides = "CellMyRides"
 let cellWallet = "CellWallet"
+
+let commanGeoPoint = GeoPoint.init(latitude: 22.7764, longitude: 75.9548)
 
 func goToNextVC(storyBoardID: String, vc_id: String, currentVC: UIViewController) {
     let vc = UIStoryboard.init(name: storyBoardID, bundle: Bundle.main).instantiateViewController(withIdentifier: vc_id)
@@ -90,18 +96,14 @@ func getDistanceOfTwoPoint(startPoint: String, endPoint: String) -> String {
 }
 
 
-func getDistanceOfTwoPointInDouble(startPoint: String, endPoint: String) -> Double {
-    let arrStartPoint =  startPoint.components(separatedBy: ",")
-    let arrEndPoint =  endPoint.components(separatedBy: ",")
+func getDistanceOfTwoPointInGeoPoint(startPoint: GeoPoint, endPoint: GeoPoint) -> Double {
     
-    if arrStartPoint.count > 1 && arrEndPoint.count > 1 {
-        let a = distance(lat1: Double(arrStartPoint[0])!,
-                         lon1: Double(arrStartPoint[1])!,
-                         lat2: Double(arrEndPoint[0])!,
-                         lon2: Double(arrEndPoint[1])!, unit: "K")
+    let a = distance(lat1: startPoint.latitude,
+                     lon1: startPoint.longitude,
+                     lat2:endPoint.latitude,
+                     lon2: endPoint.longitude, unit: "K")
         let doubleStr = String(format: "%.2f", a)
         return Double(doubleStr) ?? 0.00
-    }
     return 0.00
 }
 
@@ -149,8 +151,24 @@ func dictToStringKeyParam(dict: [String:Any], key: String) -> String {
 }
 
 
+func dictToGeoPointKeyParam(dict: [String:Any], key: String) -> GeoPoint {
+    let geoPoint = commanGeoPoint
+    if let value = dict[key] as? GeoPoint {
+        return value
+    } else {
+        return geoPoint
+    }
+}
+func dictToDateKeyParam(dict: [String:Any], key: String) -> Date {
+    if let value = dict[key] as? Date {
+        return value
+    } else {
+        return Date()
+    }
+}
 func setNavigationRootStoryboard() {
     if UserDefaults.standard.bool(forKey: "isLogin") as Bool == true {
+        AppDelegate().getUserDetailFromFirebase()
        let sb: UIStoryboard = UIStoryboard(name: homeStoryBoard, bundle:Bundle.main)
         let vcNew = sb.instantiateViewController(withIdentifier: "HomeNav") as? UINavigationController
         UIApplication.shared.keyWindow?.rootViewController = vcNew

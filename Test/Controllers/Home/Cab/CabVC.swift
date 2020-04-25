@@ -46,7 +46,7 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
         revealViewController()?.rearViewRevealWidth = 60
         
         bookingDict = ["amount": "123",  "date":"","driveId": "123132",
-                       "driverId": "0", "drop": "", "geopoint":  "", "km": "0", "pickup": "0",  "reviewComment": "",  "reviewStar": 3, "status": 3, "tax": "22"]
+                       "driverId": "0", "dropAddress": "", "geopoint":  "", "km": "0", "pickupAddress": "0",  "reviewComment": "",  "reviewStar": 3, "status": 3, "tax": "22"]
         getDirections(enterdLocations: ["Indore", "Bhopal"])
     }
     
@@ -91,7 +91,7 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
 //MARK: - Custome Method extension
 fileprivate extension CabVC {
     func getDistanceInInt() -> Int {
-        let value = getDistanceOfTwoPointInDouble(startPoint: bookingDict["pickupPoint"] as? String ?? "", endPoint: bookingDict["dropPoint"] as? String ?? "")
+        let value = getDistanceOfTwoPointInGeoPoint(startPoint: bookingDict["pickupLocation"] as? GeoPoint ?? commanGeoPoint, endPoint: bookingDict["dropLocation"] as? GeoPoint ?? commanGeoPoint)
         return Int(value)
     }
 }
@@ -119,24 +119,24 @@ extension CabVC : CLLocationManagerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if placeForIndex == 1 {
-            bookingDict["pickup"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
-            bookingDict["pickupPoint"] = "\(place.coordinate.latitude)," + "\(place.coordinate.longitude)"
-            self.txtPicupLocationPopup.text = bookingDict["pickup"] as? String ?? ""
+            bookingDict["pickupAddress"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
+            bookingDict["pickupLocation"] = GeoPoint.init(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            self.txtPicupLocationPopup.text = bookingDict["pickupAddress"] as? String ?? ""
             
         } else if placeForIndex == 2 {
-            bookingDict["drop"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
-            bookingDict["dropPoint"] = "\(place.coordinate.latitude)," + "\(place.coordinate.longitude)"
-            self.txtDroupLocationPopup.text = bookingDict["drop"] as? String ?? ""
+            bookingDict["dropAddress"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
+            bookingDict["dropLocation"] = GeoPoint.init(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            self.txtDroupLocationPopup.text = bookingDict["dropAddress"] as? String ?? ""
             
         } else if placeForIndex == 3 {
-            bookingDict["pickup"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
-            bookingDict["pickupPoint"] = "\(place.coordinate.latitude)," + "\(place.coordinate.longitude)"
-            self.txtPicupLocationPopup.text = bookingDict["pickup"] as? String ?? ""
+            bookingDict["pickupAddress"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
+            bookingDict["pickupLocation"] = GeoPoint.init(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            self.txtPicupLocationPopup.text = bookingDict["pickupAddress"] as? String ?? ""
             
         } else if placeForIndex == 4 {
-            bookingDict["drop"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
-            bookingDict["dropPoint"] = "\(place.coordinate.latitude)," + "\(place.coordinate.longitude)"
-            self.txtDroupLocationPopup.text = bookingDict["drop"] as? String ?? ""
+            bookingDict["dropAddress"] = "\(place.name ?? ""), " + "\(place.formattedAddress ?? "")"
+            bookingDict["dropLocation"] = GeoPoint.init(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+            self.txtDroupLocationPopup.text = bookingDict["dropAddress"] as? String ?? ""
             
         } else {
             
@@ -167,7 +167,7 @@ extension CabVC : CLLocationManagerDelegate {
 extension CabVC {
     func sendBookingOnFirebase() {
         self.sendNotificationOnFirebase()
-        let distance = getDistanceOfTwoPointInDouble(startPoint: bookingDict["pickupPoint"] as? String ?? "", endPoint: bookingDict["dropPoint"] as? String ?? "")
+        let distance = getDistanceOfTwoPointInGeoPoint(startPoint: bookingDict["pickupLocation"] as? GeoPoint ?? commanGeoPoint, endPoint: bookingDict["dropLocation"] as? GeoPoint ?? commanGeoPoint)
         let amount = Int(distance*2)
         bookingDict["amount"] = amount
         self.indicator.isHidden = false
@@ -193,9 +193,10 @@ extension CabVC {
         
         let dictionary = ["bookingTime" : bookingDict["date"] as! Date,
                           "create": Date(),
-                          "dropLocation":bookingDict["drop"] as? String ?? "",
-                          "pickup": bookingDict["pickupPoint"] as? String ?? "",
-                          "pickupLocation": bookingDict["picup"] as? String ?? "",
+                          "dropAddress":bookingDict["dropAddress"] as? String ?? "",
+                          "pickupAddress": bookingDict["pickupAddress"] as? String ?? "",
+                          "pickupLocation": bookingDict["pickupLocation"] as? GeoPoint ?? commanGeoPoint,
+                          "dropLocation": bookingDict["dropLocation"] as? GeoPoint ?? commanGeoPoint,
                           "ride":bookingDict["ride"] as? String ?? "",
                           "status": 0,
                           "userId": "90er3wWq0"] as [String : Any]

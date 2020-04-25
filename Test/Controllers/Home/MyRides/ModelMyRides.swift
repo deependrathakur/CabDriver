@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import Firebase
 
 class ModelMyRides: NSObject {
     var acceptedData = ""
@@ -23,8 +24,8 @@ class ModelMyRides: NSObject {
     var paymentId = ""
     var pickupAddress = ""
     var dropAddress = ""
-    var pickupLocation = CLGeocoder()
-    var dropLocation = CLGeocoder()
+    var pickupLocation:GeoPoint?
+    var dropLocation:GeoPoint?
     var rattingStar = 0
     var reachedDate = ""
     var review = false
@@ -36,12 +37,8 @@ class ModelMyRides: NSObject {
     var date = ""
     var driveId = ""
     var driverId = ""
-    var drop = ""
-    var dropPoint:CLLocationCoordinate2D!
-    var geopoint:CLLocationCoordinate2D
+    var geopoint:GeoPoint?
     var km = ""
-    var pickup = ""
-    var pickupPoint:CLLocationCoordinate2D
     var reviewComment = ""
     var reviewStar = ""
     var status = ""
@@ -52,12 +49,8 @@ class ModelMyRides: NSObject {
         date = dictToStringKeyParam(dict: dict, key: "date")
         driveId = dictToStringKeyParam(dict: dict, key: "driveId")
         driverId = dictToStringKeyParam(dict: dict, key: "driverId")
-        drop = dictToStringKeyParam(dict: dict, key: "drop")
-        dropPoint = getCordinate(dict: dict, key: "dropPoint")
-        geopoint  = getCordinate(dict: dict, key: "geopoint")
+        geopoint  = dictToGeoPointKeyParam(dict: dict, key: "geopoint")
         km = dictToStringKeyParam(dict: dict, key: "km")
-        pickup = dictToStringKeyParam(dict: dict, key: "pickup")
-        pickupPoint = getCordinate(dict: dict, key: "pickupPoint")
         reviewComment = dictToStringKeyParam(dict: dict, key: "reviewComment")
         reviewStar = dictToStringKeyParam(dict: dict, key: "reviewStar")
         status = dictToStringKeyParam(dict: dict, key: "status")
@@ -76,8 +69,8 @@ class ModelMyRides: NSObject {
         paymentId = dictToStringKeyParam(dict: dict, key: "paymentId")
         pickupAddress = dictToStringKeyParam(dict: dict, key: "pickupAddress")
         dropAddress = dictToStringKeyParam(dict: dict, key: "dropAddress")
-        pickupLocation = dict["pickupLocation"] as? CLGeocoder ?? CLGeocoder()
-        dropLocation = dict["dropLocation"] as? CLGeocoder ?? CLGeocoder()
+        pickupLocation = dictToGeoPointKeyParam(dict: dict, key: "pickupLocation")
+        dropLocation = dictToGeoPointKeyParam(dict: dict, key: "dropLocation")
         rattingStar = dictToIntKeyParam(dict: dict, key: "rattingStar")
         reachedDate = dictToStringKeyParam(dict: dict, key: "reachedDate")
         review = dictToBoolKeyParam(dict: dict, key: "review")

@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 class MyRidesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
-    
     @IBOutlet weak var button1:UIButton!
     @IBOutlet weak var button2:UIButton!
     @IBOutlet weak var button3:UIButton!

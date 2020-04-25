@@ -51,15 +51,18 @@ fileprivate extension RegisterVC {
         } else {
             self.indicator.isHidden = false
             let dict = ["available": true, "busy" : false, "cabAdded" : true, "cab_type": "micro", "currentLocation": "",
-
-                        "deviceToken": "", "documentAdded": true, "gender":"", "id":"", "verified":true, "created":Date(),//getCurrentTimeStampWOMiliseconds(dateToConvert: Date() as NSDate),
+                        "deviceToken": "",
+                        "documentAdded": true,
+                        "gender":"", "id":"",
+                        "verified":true,
+                        "created":Date(),
                 "email":self.txtEmail.text ?? "",
                 "mobile":self.txtMobile.text ?? "",
                 "password":self.txtPassword.text ?? "",
                 "userType":1,
                 "name":self.txtFullName.text ?? ""
                 ] as [String : Any]
-            let vc = UIStoryboard.init(name: mainStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: uploadDocVC) as? UploadDocVC
+            let vc = UIStoryboard.init(name: mainStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabDetailViewController) as? CabDetailViewController
             vc?.userDict = dict
             self.navigationController?.pushViewController(vc ?? UploadDocVC(), animated: true)
         }

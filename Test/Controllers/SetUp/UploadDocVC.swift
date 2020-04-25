@@ -46,7 +46,6 @@ class UploadDocVC: UIViewController, UINavigationControllerDelegate, UIImagePick
 //MARK: - Custome Method extension
 fileprivate extension UploadDocVC {
     func viewConfigure() {
-        //        storageRef = Storage.storage(url:"gs://cab7-84952.appspot.com")
         txtDrivingLicence.textFieldCorner(cornerRadius: 5)
         txtCommercialInsurance.textFieldCorner(cornerRadius: 5)
         txtRegistrationCertificate.textFieldCorner(cornerRadius: 5)
@@ -91,15 +90,18 @@ fileprivate extension UploadDocVC {
         } else {
             var ref: DocumentReference? = nil
             userDict["documentFile"] = docDict
+            userDict["created"] = Date()
+            
             ref = db.collection("driver").addDocument(data: userDict) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {
                     print("Document added with ID: \(ref!.documentID)")
                     UserDefaults.standard.set("\(ref!.documentID)", forKey: "userId")
-                    UserDefaults.standard.set(self.userDict, forKey: "userDetail")
                     UserDefaults.standard.set(true, forKey: "isLogin")
-                    self.db.collection("driver").document("\(ref!.documentID)").updateData(["id":"\(ref!.documentID)"])
+                    DictUserDetails = self.userDict
+                    modelUserDetail = ModelUserDetail.init(Dict: DictUserDetails ?? ["":""])
+                self.db.collection("driver").document("\(ref!.documentID)").updateData(["id":"\(ref!.documentID)"])
                     setNavigationRootStoryboard()
                 }
             }

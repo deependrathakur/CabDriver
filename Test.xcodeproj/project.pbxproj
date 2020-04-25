@@ -24,6 +24,7 @@
 		EE3BC7BC2412B17A0075C28E /* helvetica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE67719C240C320C00DE8D25 /* helvetica.ttf */; };
 		EE3BC7BD2412B17D0075C28E /* myriad.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE67719E240C321C00DE8D25 /* myriad.ttf */; };
 		EE3BC7BE2412B17F0075C28E /* museo700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE67719D240C321500DE8D25 /* museo700.ttf */; };
+		EE3D2363244CCA210097EB83 /* CabDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D2362244CCA210097EB83 /* CabDetailViewController.swift */; };
 		EE40FC6C2413CA98002A5076 /* ModelMyRides.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40FC6B2413CA98002A5076 /* ModelMyRides.swift */; };
 		EE53D4C7241977CD00111C7D /* PickerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE53D4C6241977CD00111C7D /* PickerViewVC.swift */; };
 		EE677198240C2E2600DE8D25 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE677197240C2E2600DE8D25 /* UserProfileVC.swift */; };
@@ -32,6 +33,7 @@
 		EE71EF182406C25D00B6028D /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE71EF162406C25D00B6028D /* TPKeyboardAvoidingScrollView.m */; };
 		EE71EF1E2406DD6200B6028D /* customClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE71EF1D2406DD6200B6028D /* customClass.swift */; };
 		EE71EF202406E14700B6028D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE71EF1F2406E14700B6028D /* RegisterVC.swift */; };
+		EEA736502454975C008A60D3 /* ModelUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA7364F2454975C008A60D3 /* ModelUserDetail.swift */; };
 		EED85439240556D900E225EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED85438240556D900E225EE /* AppDelegate.swift */; };
 		EED8543B240556D900E225EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8543A240556D900E225EE /* SceneDelegate.swift */; };
 		EED8543D240556D900E225EE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8543C240556D900E225EE /* LoginVC.swift */; };
@@ -86,6 +88,7 @@
 		EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EE38A9F1240AA57900E97C34 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		EE38A9F5240AC47E00E97C34 /* CompleteRideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRideVC.swift; sourceTree = "<group>"; };
+		EE3D2362244CCA210097EB83 /* CabDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabDetailViewController.swift; sourceTree = "<group>"; };
 		EE40FC6B2413CA98002A5076 /* ModelMyRides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMyRides.swift; sourceTree = "<group>"; };
 		EE53D4C6241977CD00111C7D /* PickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewVC.swift; sourceTree = "<group>"; };
 		EE677197240C2E2600DE8D25 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		EE71EF162406C25D00B6028D /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		EE71EF1D2406DD6200B6028D /* customClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customClass.swift; sourceTree = "<group>"; };
 		EE71EF1F2406E14700B6028D /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		EEA7364F2454975C008A60D3 /* ModelUserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUserDetail.swift; sourceTree = "<group>"; };
 		EED85435240556D900E225EE /* CabDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CabDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED85438240556D900E225EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EED8543A240556D900E225EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,15 +289,17 @@
 		EE71EF0F2406C17B00B6028D /* SetUp */ = {
 			isa = PBXGroup;
 			children = (
+				EEA7364E2454973F008A60D3 /* Model */,
 				EED8543C240556D900E225EE /* LoginVC.swift */,
 				EE71EF1F2406E14700B6028D /* RegisterVC.swift */,
 				EEE496332407F55900C0734B /* OTPVC.swift */,
+				EE3D2362244CCA210097EB83 /* CabDetailViewController.swift */,
 				EE0DA049241BA03600CEB957 /* UploadDocVC.swift */,
 			);
 			path = SetUp;
 			sourceTree = "<group>";
 		};
-		EE71EF102406C23700B6028D /* Helpers */ = {
+		EE71EF102406C23700B6028D /* HelpersDriver */ = {
 			isa = PBXGroup;
 			children = (
 				EE67719B240C31E700DE8D25 /* CustomeClass */,
@@ -301,7 +307,7 @@
 				EE677199240C31C500DE8D25 /* Font */,
 				EE71EF112406C24100B6028D /* ScrollingClass */,
 			);
-			path = Helpers;
+			path = HelpersDriver;
 			sourceTree = "<group>";
 		};
 		EE71EF112406C24100B6028D /* ScrollingClass */ = {
@@ -314,6 +320,14 @@
 				EE71EF122406C25C00B6028D /* Test-Bridging-Header.h */,
 			);
 			path = ScrollingClass;
+			sourceTree = "<group>";
+		};
+		EEA7364E2454973F008A60D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EEA7364F2454975C008A60D3 /* ModelUserDetail.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EED8542C240556D900E225EE = {
@@ -341,7 +355,7 @@
 		EED85437240556D900E225EE /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				EE71EF102406C23700B6028D /* Helpers */,
+				EE71EF102406C23700B6028D /* HelpersDriver */,
 				EE71EF0E2406C15C00B6028D /* DelegateClass */,
 				EE71EF0D2406C14400B6028D /* Controllers */,
 				EED85441240556E500E225EE /* Assets.xcassets */,
@@ -672,6 +686,7 @@
 				EEEC3A7224098E640036A75C /* CabVC.swift in Sources */,
 				EED8543D240556D900E225EE /* LoginVC.swift in Sources */,
 				EE38A9EA240A5ADF00E97C34 /* WaitingForCustomerVC.swift in Sources */,
+				EE3D2363244CCA210097EB83 /* CabDetailViewController.swift in Sources */,
 				EE71EF182406C25D00B6028D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				EEE496342407F55900C0734B /* OTPVC.swift in Sources */,
 				EE38A9EC240AA14100E97C34 /* MyMenuVC.swift in Sources */,
@@ -695,6 +710,7 @@
 				EE058D60241C1568000E3FE0 /* WalletVC.swift in Sources */,
 				EED8543B240556D900E225EE /* SceneDelegate.swift in Sources */,
 				EE53D4C7241977CD00111C7D /* PickerViewVC.swift in Sources */,
+				EEA736502454975C008A60D3 /* ModelUserDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
