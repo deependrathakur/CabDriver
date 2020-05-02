@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import MapKit
 import GooglePlaces
 
 //colors
@@ -39,12 +40,16 @@ let completeRideVC = "CompleteRideVC"
 let userProfileVC = "UserProfileVC"
 let myMenuVC = "MyMenuVC"
 let walletVC = "WalletVC"
+let updateCabDetailVC = "UpdateCabDetailVC"
+let updateDocVC = "UpdateDocVC"
 //cell
 let myMenuCell = "MyMenuCell"
 let cellMyRides = "CellMyRides"
 let cellWallet = "CellWallet"
 
 let commanGeoPoint = GeoPoint.init(latitude: 22.7764, longitude: 75.9548)
+var currentLocationGeoPoint = GeoPoint.init(latitude: 22.7764, longitude: 75.9548)
+var currentAddress = ""
 
 func goToNextVC(storyBoardID: String, vc_id: String, currentVC: UIViewController) {
     let vc = UIStoryboard.init(name: storyBoardID, bundle: Bundle.main).instantiateViewController(withIdentifier: vc_id)
@@ -267,3 +272,51 @@ func resizeImage(image: UIImage) -> UIImage {
     UIGraphicsEndImageContext()
     return UIImage(data: imageData!)!
 }
+
+//MARK: - Drow polyline
+func showRouteOnMap(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D, mapView: MKMapView) -> MKMapView {
+
+    let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil)
+    let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
+
+    let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+    let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+
+    let sourceAnnotation = MKPointAnnotation()
+
+    if let location = sourcePlacemark.location {
+        sourceAnnotation.coordinate = location.coordinate
+    }
+
+    let destinationAnnotation = MKPointAnnotation()
+
+    if let location = destinationPlacemark.location {
+        destinationAnnotation.coordinate = location.coordinate
+    }
+
+    mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+
+    let directionRequest = MKDirections.Request()
+    directionRequest.source = sourceMapItem
+    directionRequest.destination = destinationMapItem
+    directionRequest.transportType = .automobile
+    // Calculate the direction
+    let directions = MKDirections(request: directionRequest)
+    directions.calculate {
+        (response, error) -> Void in
+
+        guard let response = response else {
+            if let error = error {
+                print("Error: \(error)")
+            }
+
+            return
+        }
+        let route = response.routes[0]
+        mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
+        let rect = route.polyline.boundingMapRect
+        mapView.setRegion(MKCoordinateRegion(rect), animated: true)
+    }
+    return mapView
+}
+

@@ -12,6 +12,7 @@ import GooglePlaces
 
 class UserProfileVC: UIViewController,GMSAutocompleteViewControllerDelegate, SWRevealViewControllerDelegate {
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
@@ -105,6 +106,9 @@ extension UserProfileVC {
             self.txtPhone.text = dictToStringKeyParam(dict: userDetail, key: "mobile")
             self.txtAddress.text = dictToStringKeyParam(dict: userDetail, key: "address")
             userDict = userDetail
+            if let url = URL(string: modelUserDetail?.documentFile?.profilePicture ?? "") {
+                userImage.loadImageFromURL(url: url)
+            }
         }
     }
 }
@@ -113,6 +117,15 @@ extension UserProfileVC {
 fileprivate extension UserProfileVC {
     @IBAction func NotificationAction(sender: UIButton) {
         showAlertVC(title: kAlertTitle, message: WIP, controller: self)
+    }
+    @IBAction func updateCabDetails(sender: UIButton) {
+        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: updateCabDetailVC) as? UpdateCabDetailVC
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func updateCertificateDetails(sender: UIButton) {
+        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: updateDocVC) as? UpdateDocVC
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
 }
 

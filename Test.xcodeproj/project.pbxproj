@@ -13,6 +13,8 @@
 		EE058D60241C1568000E3FE0 /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE058D5F241C1568000E3FE0 /* WalletVC.swift */; };
 		EE058D62241C17E7000E3FE0 /* CellWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE058D61241C17E7000E3FE0 /* CellWallet.swift */; };
 		EE0DA04A241BA03600CEB957 /* UploadDocVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0DA049241BA03600CEB957 /* UploadDocVC.swift */; };
+		EE1FD6C9245D608400EF76AA /* UpdateCabDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FD6C8245D608400EF76AA /* UpdateCabDetailVC.swift */; };
+		EE1FD6CB245D60A900EF76AA /* UpdateDocVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FD6CA245D60A900EF76AA /* UpdateDocVC.swift */; };
 		EE38A9EA240A5ADF00E97C34 /* WaitingForCustomerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9E9240A5ADF00E97C34 /* WaitingForCustomerVC.swift */; };
 		EE38A9EC240AA14100E97C34 /* MyMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9EB240AA14100E97C34 /* MyMenuVC.swift */; };
 		EE38A9EE240AA20800E97C34 /* MyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A9ED240AA20700E97C34 /* MyMenuCell.swift */; };
@@ -82,6 +84,8 @@
 		EE058D5F241C1568000E3FE0 /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		EE058D61241C17E7000E3FE0 /* CellWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWallet.swift; sourceTree = "<group>"; };
 		EE0DA049241BA03600CEB957 /* UploadDocVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadDocVC.swift; sourceTree = "<group>"; };
+		EE1FD6C8245D608400EF76AA /* UpdateCabDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCabDetailVC.swift; sourceTree = "<group>"; };
+		EE1FD6CA245D60A900EF76AA /* UpdateDocVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDocVC.swift; sourceTree = "<group>"; };
 		EE38A9E9240A5ADF00E97C34 /* WaitingForCustomerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForCustomerVC.swift; sourceTree = "<group>"; };
 		EE38A9EB240AA14100E97C34 /* MyMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuVC.swift; sourceTree = "<group>"; };
 		EE38A9ED240AA20700E97C34 /* MyMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,15 @@
 				EE058D61241C17E7000E3FE0 /* CellWallet.swift */,
 			);
 			path = Wallet;
+			sourceTree = "<group>";
+		};
+		EE1FD6C7245D605300EF76AA /* UpdateDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EE1FD6C8245D608400EF76AA /* UpdateCabDetailVC.swift */,
+				EE1FD6CA245D60A900EF76AA /* UpdateDocVC.swift */,
+			);
+			path = UpdateDetails;
 			sourceTree = "<group>";
 		};
 		EE38A9E8240A5AB600E97C34 /* Waiting */ = {
@@ -389,6 +402,7 @@
 		EEE4963B24080BE600C0734B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EE1FD6C7245D605300EF76AA /* UpdateDetails */,
 				EE058D5E241C152D000E3FE0 /* Wallet */,
 				EE38A9F3240AA90300E97C34 /* SideMenu */,
 				EE3A3CE0240A30B100AB7C61 /* Cab */,
@@ -685,6 +699,7 @@
 				EE0DA04A241BA03600CEB957 /* UploadDocVC.swift in Sources */,
 				EEEC3A7224098E640036A75C /* CabVC.swift in Sources */,
 				EED8543D240556D900E225EE /* LoginVC.swift in Sources */,
+				EE1FD6C9245D608400EF76AA /* UpdateCabDetailVC.swift in Sources */,
 				EE38A9EA240A5ADF00E97C34 /* WaitingForCustomerVC.swift in Sources */,
 				EE3D2363244CCA210097EB83 /* CabDetailViewController.swift in Sources */,
 				EE71EF182406C25D00B6028D /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -711,6 +726,7 @@
 				EED8543B240556D900E225EE /* SceneDelegate.swift in Sources */,
 				EE53D4C7241977CD00111C7D /* PickerViewVC.swift in Sources */,
 				EEA736502454975C008A60D3 /* ModelUserDetail.swift in Sources */,
+				EE1FD6CB245D60A900EF76AA /* UpdateDocVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

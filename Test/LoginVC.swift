@@ -38,8 +38,6 @@ fileprivate extension LoginVC {
         self.view.endEditing(true)
         if self.txtEmailPhone.isEmptyText() {
             self.txtEmailPhone.shakeTextField()
-        } else if !self.txtEmailPhone.isValidateEmail() {
-            showAlertVC(title: kAlertTitle, message: InvalidEmail, controller: self)
         } else if self.txtPassword.isEmptyText() {
             self.txtPassword.shakeTextField()
         } else {

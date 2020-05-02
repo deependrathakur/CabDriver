@@ -30,7 +30,7 @@ class MyRidesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, S
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.getBookingList()
-        button1.setTitle("UPGOING", for: .normal)
+        button1.setTitle("ONGOING", for: .normal)
         button2.setTitle("COMPLETED", for: .normal)
         button3.setTitle("CANCLED", for: .normal)
         changeSegmentAction(sender: button1)
@@ -73,8 +73,12 @@ extension MyRidesVC {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabVC) as? CabVC
-//        self.navigationController?.pushViewController(vc!, animated: true)
+        let obj = self.arrBooking[indexPath.row]
+        if selectSegment == 0 {
+        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabVC) as? CabVC
+        vc?.bookingDict = obj
+        self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 }
 
@@ -115,7 +119,7 @@ fileprivate extension MyRidesVC {
                 self.arrBooking.removeAll()
                 for document in querySnapshot!.documents {
                     let modelObject = ModelMyRides.init(dict: document.data())
-                    if self.selectSegment == 0 && modelObject.status == "3" {
+                    if self.selectSegment == 0 && (modelObject.status == "1" || modelObject.status == "2" || modelObject.status == "3") {
                         self.arrBooking.append(modelObject)
                     } else if self.selectSegment == 1 && modelObject.status == "4" {
                         self.arrBooking.append(modelObject)

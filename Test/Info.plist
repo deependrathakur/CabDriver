@@ -26,6 +26,8 @@
 	<string>Location required for picup address and drop address</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Location required for picup address and drop address</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>museo700.ttf</string>
