@@ -149,15 +149,15 @@ extension CabVC : CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        currentLocationGeoPoint = GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude)
-    }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as! CLLocation
-        currentLocationGeoPoint = GeoPoint.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+//        currentLocationGeoPoint = GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude)
+//    }
+//
+//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+//        let location = locations.last as! CLLocation
+//        currentLocationGeoPoint = GeoPoint.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if !(annotation is MKPointAnnotation) {

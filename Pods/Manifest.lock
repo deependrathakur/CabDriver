@@ -167,14 +167,27 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - Firebase/Auth (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 6.4.3)
   - Firebase/CoreOnly (6.18.0):
     - FirebaseCore (= 6.6.3)
   - Firebase/Firestore (6.18.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.11.0)
+  - Firebase/Messaging (6.18.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.3.0)
   - Firebase/Storage (6.18.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.5.0)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseAuth (6.4.3):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (6.6.3):
     - FirebaseCoreDiagnostics (~> 1.2)
@@ -203,6 +216,24 @@ PODS:
     - nanopb (~> 0.3.901)
   - FirebaseFirestoreSwift (0.2):
     - FirebaseFirestore (>= 1.6.1, ~> 1.6)
+  - FirebaseInstallations (1.1.1):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.3.2):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseMessaging (4.3.0):
+    - FirebaseAnalyticsInterop (~> 1.5)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Reachability (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseStorage (3.5.0):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
@@ -221,9 +252,22 @@ PODS:
     - GooglePlaces (= 3.1.0)
   - GooglePlaces (3.1.0):
     - GoogleMaps/Base (= 3.1.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
   - GoogleUtilities/Environment (6.5.1)
   - GoogleUtilities/Logger (6.5.1):
     - GoogleUtilities/Environment
+  - GoogleUtilities/Network (6.5.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.5.1)"
+  - GoogleUtilities/Reachability (6.5.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.5.1):
+    - GoogleUtilities/Logger
   - "gRPC-C++ (0.0.9)":
     - "gRPC-C++/Implementation (= 0.0.9)"
     - "gRPC-C++/Interface (= 0.0.9)"
@@ -248,11 +292,15 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - PromisesObjC (1.2.8)
+  - Protobuf (3.11.4)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - Firebase/Auth
   - Firebase/Firestore
+  - Firebase/Messaging
   - Firebase/Storage
   - FirebaseFirestoreSwift
   - GoogleMaps
@@ -267,12 +315,17 @@ SPEC REPOS:
     - AlamofireImage
     - BoringSSL-GRPC
     - Firebase
+    - FirebaseAnalyticsInterop
+    - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
     - FirebaseFirestore
     - FirebaseFirestoreSwift
+    - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -286,6 +339,8 @@ SPEC REPOS:
     - HCSStarRatingView
     - leveldb-library
     - nanopb
+    - PromisesObjC
+    - Protobuf
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -293,12 +348,17 @@ SPEC CHECKSUMS:
   AlamofireImage: ca7325440303d041a80b7caa55066ba945522378
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   Firebase: 0490eca762a72e4f1582319539153897f1508dee
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseAuth: 5ce2b03a3d7fe56b7a6e4c5ec7ff1522890b1d6f
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 78276943ad85e616dfa54dafa6c89512987d9d60
   FirebaseCoreDiagnostics: 2109d10c35e8289b1ee6cabf44d9ffb055620194
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseFirestore: a23d596ae3a8c13d3b8353b565d2adfb690f9032
   FirebaseFirestoreSwift: 0437bb10d83f8161a9131da1739998254c78fdf5
+  FirebaseInstallations: acb3216eb9784d3b1d2d2d635ff74fa892cc0c44
+  FirebaseInstanceID: 7ee0d6777013bb952f377b41965bf132b6a075be
+  FirebaseMessaging: 4ec33842d36b3319e062e51fb8b35a74f726950d
   FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
   GoogleDataTransport: 653963cf5be60fb59cf051e070f0836fdc305f81
   GoogleDataTransportCCTSupport: 84e4d4bbab642f2e9d83ee65d78aca2b5527d314
@@ -312,7 +372,9 @@ SPEC CHECKSUMS:
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
 
-PODFILE CHECKSUM: af2f0366ac96d20c937a8d82c34a0c3164a8c798
+PODFILE CHECKSUM: 02d809ff007890dfb65f73639260c645468f44c9
 
 COCOAPODS: 1.9.0

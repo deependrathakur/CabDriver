@@ -90,6 +90,7 @@ fileprivate extension UploadDocVC {
         } else {
             var ref: DocumentReference? = nil
             userDict["documentFile"] = docDict
+            userDict["deviceToken"] = (firebaseToken == "") ? iosDeviceToken : firebaseToken
             userDict["created"] = Date()
             
             ref = db.collection("driver").addDocument(data: userDict) { err in

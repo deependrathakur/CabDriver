@@ -119,6 +119,8 @@ fileprivate extension MyRidesVC {
                 self.arrBooking.removeAll()
                 for document in querySnapshot!.documents {
                     let modelObject = ModelMyRides.init(dict: document.data())
+                    if let userId = UserDefaults.standard.string(forKey: "userId") {
+                      //  if userId != "" && userId == modelObject.userId {
                     if self.selectSegment == 0 && (modelObject.status == "1" || modelObject.status == "2" || modelObject.status == "3") {
                         self.arrBooking.append(modelObject)
                     } else if self.selectSegment == 1 && modelObject.status == "4" {
@@ -126,6 +128,9 @@ fileprivate extension MyRidesVC {
                     } else if self.selectSegment == 2 && modelObject.status == "5" {
                         self.arrBooking.append(modelObject)
                     }
+                    //    }
+                    
+                }
                 }
                 self.tableView.reloadData()
                 self.indicator.isHidden = true

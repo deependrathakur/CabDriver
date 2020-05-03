@@ -53,6 +53,7 @@ fileprivate extension LoginVC {
                         if (self.txtPassword.text == dict["password"] as? String ?? "") && ((self.txtEmailPhone.text == dict["email"] as? String ?? "") || (self.txtPassword.text == dict["mobile"] as? String ?? "")) {
                             UserDefaults.standard.set(document.documentID, forKey: "userId")
                             registeredUser = true
+                            self.db.collection("driver").document("\(document.documentID)").updateData(["id":"\(document.documentID)","deviceToken":((firebaseToken == "" ? iosDeviceToken : firebaseToken))])
                             DictUserDetails = dict
                         }
                     }
