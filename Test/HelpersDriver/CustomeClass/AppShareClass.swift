@@ -51,7 +51,10 @@ let commanGeoPoint = GeoPoint.init(latitude: 22.7764, longitude: 75.9548)
 var currentLocationGeoPoint = GeoPoint.init(latitude: 22.7764, longitude: 75.9548)
 var currentAddress = ""
 var iosDeviceToken = ""
+var bookingIds = ""
 var firebaseToken = ""
+var isFromNotification = false
+
 func goToNextVC(storyBoardID: String, vc_id: String, currentVC: UIViewController) {
     let vc = UIStoryboard.init(name: storyBoardID, bundle: Bundle.main).instantiateViewController(withIdentifier: vc_id)
     currentVC.navigationController?.pushViewController(vc, animated: true)

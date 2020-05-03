@@ -96,6 +96,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
 
 //MARK: Notification method
 extension AppDelegate {
+    
+        @available(iOS 10.0, *)
+        func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                    willPresent notification: UNNotification,
+                                    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            if let userInfo = notification.request.content.userInfo as? [String : Any]{
+                        completionHandler([.alert,.sound])
+                if let bookingId = userInfo["bookingId"] as? String {
+                    bookingIds = bookingId
+                }
+            }
+        }
+        
+        @available(iOS 10.0, *)
+        func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                    didReceive response: UNNotificationResponse,
+                                    withCompletionHandler completionHandler: @escaping () -> Void) {
+            switch response.actionIdentifier {
+            case UNNotificationDismissActionIdentifier:
+                print("Dismiss Action")
+            case UNNotificationDefaultActionIdentifier:
+                print("Open Action")
+                if let userInfo = response.notification.request.content.userInfo as? [String : Any]{
+                    self.handleNotificationWithNotificationData(userInfo: userInfo)
+                }
+            case "Snooze":
+                print("Snooze")
+            case "Delete":
+                print("Delete")
+            default:
+                print("default")
+            }
+            completionHandler()
+        }
+    
     //MARK: - Remote Notification Get Device token methods.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
@@ -154,7 +189,6 @@ extension AppDelegate {
         UIApplication.shared.registerForRemoteNotifications()
     }
 
-
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         // Note: This callback is fired at each app startup and whenever a new token is generated.
         firebaseToken = fcmToken
@@ -192,5 +226,63 @@ extension AppDelegate {
                 firebaseToken = "\(result.token)"
             }
         })
+    }
+    
+    func handleNotificationWithNotificationData(userInfo: [String : Any]) {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+        isFromNotification =  true
+        let isLoggedIn : Bool =  UserDefaults.standard.bool(forKey: "isLoggedIn")
+        guard isLoggedIn else { return }
+        print("\n\n>> AppDelegate userInfo = \(userInfo)\n\n")
+        
+        var notifincationType : Int?
+        
+        if let bookingId = userInfo["bookingId"] as? String {
+            bookingIds = bookingId
+        }
+        setNavigationRootStoryboard()
+        if let notiType = userInfo["notifincationType"] as? Int{
+            notifincationType = notiType
+        }else{
+            if let notiType = userInfo["notifincationType"] as? String{
+                notifincationType = Int(notiType)
+            }
+        }
+        guard let notiType = notifincationType else {
+            return
+        }
+        
+        
+        //notificationType : "booking","feed","story","profile","chat"
+
+        /*
+         AppDelegate userInfo = [ "aps": {
+         alert ={
+         body = "Neha commented on your post.";
+         title = Comment;
+         };
+         "content-available" = 1;
+         "mutable-content" = 1;
+         sound = default;
+         },
+         "notifyId": 17,
+         "gcm.notification.notifincationType": 9,
+         "google.c.a.e": 1,
+         "title": Comment,
+         "gcm.message_id": 0:1533113029672857%c6fca462c6fca462,
+         "body": Neha commented on your post.,
+         "notifincationType": 9,
+         "urlImageString": http://koobi.co.uk:3000/uploads/profile/1532757198120.jpg,
+         "gcm.notification.notifyId": 17]
+         
+         >> AppDelegate userInfo = ["userType": user, "notifyId": 1, "body": Pankaj added to their story., "google.c.a.e": 1, "gcm.notification.userType": user, "urlImageString": http://koobi.co.uk:3000/uploads/profile/1532755154540.jpg, "notifincationType": 13, "title": Story, "gcm.message_id": 0:1533292269949856%c6fca462c6fca462, "aps": {
+         alert =     {
+         body = "Pankaj added to their story.";
+         title = Story;
+         };
+         "content-available" = 1;
+         sound = default;
+         }, "gcm.notification.notifyId": 1, "gcm.notification.notifincationType": 13]
+         */
     }
 }

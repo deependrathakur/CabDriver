@@ -42,8 +42,9 @@ class ModelMyRides: NSObject {
     var reviewComment = ""
     var reviewStar = ""
     var status = ""
+    var bookingId = ""
     var tax = ""
-
+    
     init(dict: [String : Any]) {
         amount = dictToStringKeyParam(dict: dict, key: "amount")
         date = dictToStringKeyParam(dict: dict, key: "date")
@@ -55,7 +56,7 @@ class ModelMyRides: NSObject {
         reviewStar = dictToStringKeyParam(dict: dict, key: "reviewStar")
         status = dictToStringKeyParam(dict: dict, key: "status")
         tax = dictToStringKeyParam(dict: dict, key: "tax")
-        
+        bookingId = dictToStringKeyParam(dict: dict, key: "bookingId")
         acceptedData = dictToStringKeyParam(dict: dict, key: "acceptedData")
         cabId = dictToStringKeyParam(dict: dict, key: "cabId")
         busy = dictToBoolKeyParam(dict: dict, key: "busy")

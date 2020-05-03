@@ -98,18 +98,18 @@ class UpdateCabDetailVC: UIViewController {
             userDict["cab"] = dict
             userDict["cabAdded"] = true
             
-        if let userId = UserDefaults.standard.string(forKey: "userId") {
-            indicator.isHidden = true
-            modelUserDetail?.cabAdded = true
-            modelUserDetail?.cab_type = userDict["cab_type"] as? String ?? ""
-            modelUserDetail?.cab?.brandName = self.txtBrandName.text ?? ""
-            modelUserDetail?.cab?.color = self.txtColor.text ?? ""
-            modelUserDetail?.cab?.number = self.txtNumber.text ?? ""
-            modelUserDetail?.cab?.modelName = self.txtModelName.text ?? ""
-            self.db.collection("driver").document(userId).updateData(userDict)
-            showAlertVC(title: kAlertTitle, message: "Cab detail update successfully.", controller: self)
-            AppDelegate().getUserDetailFromFirebase()
-        }
+            if let userId = UserDefaults.standard.string(forKey: "userId") {
+                indicator.isHidden = true
+                modelUserDetail?.cabAdded = true
+                modelUserDetail?.cab_type = userDict["cab_type"] as? String ?? ""
+                modelUserDetail?.cab?.brandName = self.txtBrandName.text ?? ""
+                modelUserDetail?.cab?.color = self.txtColor.text ?? ""
+                modelUserDetail?.cab?.number = self.txtNumber.text ?? ""
+                modelUserDetail?.cab?.modelName = self.txtModelName.text ?? ""
+                self.db.collection("driver").document(userId).updateData(userDict)
+                showAlertVC(title: kAlertTitle, message: "Cab detail update successfully.", controller: self)
+                AppDelegate().getUserDetailFromFirebase()
+            }
             indicator.isHidden = true
         }
     }

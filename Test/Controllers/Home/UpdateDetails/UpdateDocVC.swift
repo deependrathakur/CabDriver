@@ -152,7 +152,7 @@ fileprivate extension UpdateDocVC {
         } else {
             userDict["documentFile"] = docDict
             if let userId = UserDefaults.standard.string(forKey: "userId") {
-            self.db.collection("driver").document(userId).updateData(userDict)
+                self.db.collection("driver").document(userId).updateData(userDict)
                 AppDelegate().getUserDetailFromFirebase()
             }
         }

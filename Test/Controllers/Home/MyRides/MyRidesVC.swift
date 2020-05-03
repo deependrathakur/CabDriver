@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class MyRidesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
     @IBOutlet weak var button1:UIButton!
@@ -17,13 +18,13 @@ class MyRidesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, S
     @IBOutlet weak var tableView:UITableView!
     @IBOutlet weak var noRecord:UILabel!
     @IBOutlet var indicator: UIActivityIndicatorView!
-
+    
     @IBOutlet var viewForSide: UIView!
     
     var arrBooking = [ModelMyRides]()
     let db = Firestore.firestore()
     var selectSegment = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicator.isHidden = true
@@ -67,6 +68,7 @@ extension MyRidesVC {
             cell.lblDropLocation.text = object.dropAddress
             cell.lblPrice.text = "$" + object.amount
             cell.lblDate.text = object.createdData
+            cell.lblNo.text = modelUserDetail?.cab?.number
             return cell
         }
         return UITableViewCell()
@@ -75,9 +77,11 @@ extension MyRidesVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj = self.arrBooking[indexPath.row]
         if selectSegment == 0 {
-        let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabVC) as? CabVC
-        vc?.bookingDict = obj
-        self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: waitingForCustomerVC) as? WaitingForCustomerVC
+            vc?.bookingDict = obj
+            vc?.bookingId = obj.bookingId
+            vc?.rideStatus = Int(obj.status) ?? 1
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
 }
@@ -119,18 +123,22 @@ fileprivate extension MyRidesVC {
                 self.arrBooking.removeAll()
                 for document in querySnapshot!.documents {
                     let modelObject = ModelMyRides.init(dict: document.data())
+                    modelObject.bookingId = "\(document.documentID)"
                     if let userId = UserDefaults.standard.string(forKey: "userId") {
-                      //  if userId != "" && userId == modelObject.userId {
-                    if self.selectSegment == 0 && (modelObject.status == "1" || modelObject.status == "2" || modelObject.status == "3") {
-                        self.arrBooking.append(modelObject)
-                    } else if self.selectSegment == 1 && modelObject.status == "4" {
-                        self.arrBooking.append(modelObject)
-                    } else if self.selectSegment == 2 && modelObject.status == "5" {
-                        self.arrBooking.append(modelObject)
+                        
+                        print(userId, "<><><><",  modelObject.driverId)
+                        
+                        
+                        if userId != "" && userId == modelObject.driverId {
+                            if self.selectSegment == 0 && (modelObject.status == "1" || modelObject.status == "2" || modelObject.status == "3") {
+                                self.arrBooking.append(modelObject)
+                            } else if self.selectSegment == 1 && modelObject.status == "4" {
+                                self.arrBooking.append(modelObject)
+                            } else if self.selectSegment == 2 && modelObject.status == "5" {
+                                self.arrBooking.append(modelObject)
+                            }
+                        }
                     }
-                    //    }
-                    
-                }
                 }
                 self.tableView.reloadData()
                 self.indicator.isHidden = true

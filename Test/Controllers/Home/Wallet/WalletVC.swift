@@ -89,13 +89,13 @@ fileprivate extension WalletVC {
     @IBAction func NotificationAction(sender: UIButton) {
         self.view.endEditing(true)
         showAlertVC(title: kAlertTitle, message: WIP, controller: self)
-     }
+    }
     
     @IBAction func WithdrowAction(sender: UIButton) {
         self.view.endEditing(true)
         showAlertVC(title: kAlertTitle, message: WIP, controller: self)
     }
-
+    
 }
 
 //MARK: - Revel extension

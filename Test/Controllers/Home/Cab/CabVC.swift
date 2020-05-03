@@ -13,13 +13,13 @@ import Firebase
 import GoogleMaps
 
 class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelegate, MKMapViewDelegate {
-
+    
     @IBOutlet var indicator: UIActivityIndicatorView!
     
     //popup view confirm
     @IBOutlet weak var vwPopup:UIView!
     @IBOutlet weak var btnAvailable:UIButton!
-
+    
     @IBOutlet weak var lblPrice:UILabel!
     @IBOutlet weak var lblTimeDistance:UILabel!
     
@@ -34,7 +34,7 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
     var bookingDict = ModelMyRides(dict: ["":""])
     fileprivate let db = Firestore.firestore()
     fileprivate let locationManager = CLLocationManager()
-    
+    var bookingId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicator.isHidden = true
@@ -45,10 +45,10 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-
+        
         self.txtPicupLocationPopup.delegate = self
         self.txtDroupLocationPopup.delegate = self
-
+        
         self.vwPopup.isHidden = true
         menuButton.addTarget(revealViewController, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.revealViewController().delegate = self
@@ -59,20 +59,24 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
         self.vwPopup.isHidden = true
         UserDefaults.standard.set(cabVC, forKey: "vc")
         AppDelegate().getUserDetailFromFirebase()
+        if isFromNotification == true {
+            self.bookingId = bookingIds
+        }
+        self.getBookingData()
         parseDataInField()
         UserDetails()
     }
     
- // MARK: MKMapViewDelegate
-   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-       if let polyline = overlay as? MKPolyline {
-           let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-           polylineRenderer.strokeColor = .blue
-           polylineRenderer.lineWidth = 3
-           return polylineRenderer
-       }
-       return MKOverlayRenderer(overlay: overlay)
-   }
+    // MARK: MKMapViewDelegate
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: polyline)
+            polylineRenderer.strokeColor = .blue
+            polylineRenderer.lineWidth = 3
+            return polylineRenderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
     func getDirections(enterdLocations:[String])  {
         // array has the address strings
         var locations = [MKPointAnnotation]()
@@ -83,15 +87,15 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
                     print("Error", error)
                 }
                 if let placemark = placemarks?.first {
-
+                    
                     let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-
+                    
                     let dropPin = MKPointAnnotation()
                     dropPin.coordinate = coordinates
                     dropPin.title = item
                     self.mapView.addAnnotation(dropPin)
                     self.mapView.selectAnnotation( dropPin, animated: true)
-
+                    
                     locations.append(dropPin)
                     //add this if you want to show them all
                     self.mapView.showAnnotations(locations, animated: true)
@@ -103,6 +107,26 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
 
 //MARK: - Custome Method extension
 fileprivate extension CabVC {
+    func getBookingData() {
+        if bookingId.count > 0 {
+            db.collection("booking").document(bookingId).getDocument { (querySnapshot, err) in
+                if let err = err {
+                    self.indicator.isHidden = true
+                } else {
+                    if let document = querySnapshot?.data() {
+                        print("<><><><><>")
+                        self.bookingDict = ModelMyRides.init(dict: document)
+                        self.parseDataInField()
+                        if self.bookingDict.status == "1" && isFromNotification == true {
+                            self.vwPopup.isHidden = false
+                            isFromNotification = false
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func UserDetails() {
         if modelUserDetail?.available == true {
             self.btnAvailable.setTitle("AVAILABLE", for: .normal)
@@ -125,7 +149,7 @@ fileprivate extension CabVC {
         self.mapView = showRouteOnMap(pickupCoordinate: pickupCoordinate, destinationCoordinate: destinationCoordinate, mapView: mapView)
         self.mapViewPopup = showRouteOnMap(pickupCoordinate:pickupCoordinate, destinationCoordinate: destinationCoordinate, mapView: mapViewPopup)
     }
-  
+    
     
     func getDistanceInInt() -> Int {
         let value = getDistanceOfTwoPointInGeoPoint(startPoint: bookingDict.pickupLocation ?? commanGeoPoint, endPoint: bookingDict.dropLocation ?? commanGeoPoint)
@@ -149,15 +173,15 @@ extension CabVC : CLLocationManagerDelegate {
         }
     }
     
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        currentLocationGeoPoint = GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude)
-//    }
-//
-//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-//        let location = locations.last as! CLLocation
-//        currentLocationGeoPoint = GeoPoint.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//    }
+    //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+    //        currentLocationGeoPoint = GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude)
+    //    }
+    //
+    //    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    //        let location = locations.last as! CLLocation
+    //        currentLocationGeoPoint = GeoPoint.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+    //    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if !(annotation is MKPointAnnotation) {
@@ -169,7 +193,7 @@ extension CabVC : CLLocationManagerDelegate {
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             if bookingDict.pickupAddress == "" || bookingDict.pickupAddress == nil {anView?.image = nil} else {
-            anView?.image = #imageLiteral(resourceName: "car5")
+                anView?.image = #imageLiteral(resourceName: "car5")
             }
             anView?.canShowCallout = true
         }
@@ -179,7 +203,7 @@ extension CabVC : CLLocationManagerDelegate {
         return anView
     }
 }
- 
+
 //MARK: - Button Method extension
 fileprivate extension CabVC {
     @IBAction func currentLocation(sender: UIButton) {
@@ -197,9 +221,21 @@ fileprivate extension CabVC {
     @IBAction func AcceptAction(sender: UIButton) {
         self.view.endEditing(true)
         self.vwPopup.isHidden = true
-        setRevelVC(storyBoardID: homeStoryBoard, vc_id: waitingForCustomerVC, currentVC: self)
+        if let userId = UserDefaults.standard.string(forKey: "userId") {
+            let updatedDict = ["status":1, "driverId":userId] as [String : Any]
+            self.db.collection("booking").document(bookingId).updateData(updatedDict)
+            let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: waitingForCustomerVC) as? WaitingForCustomerVC
+            vc?.bookingId = bookingId
+            vc?.rideStatus = 1
+            vc?.bookingDict = bookingDict
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
-    
+    //accept = 1
+    //cancel = 5
+    //arri = 2
+    //start = 3
+    //complet = 4
     @IBAction func AvailableBookingAction(sender: UIButton) {
         self.view.endEditing(true)
         if modelUserDetail?.available ?? true {
