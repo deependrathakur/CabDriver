@@ -80,14 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
-        let distanceFromLastLocation = getDistanceOfTwoPointInGeoPoint(startPoint: GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude), endPoint: currentLocationGeoPoint)
+        let distanceFromLastLocation = getDistanceOfTwoPointInGeoPoint(startPoint: GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude), endPoint: lastPointLocation)
         let meter = (distanceFromLastLocation * 1000)
         if meter > 3 {
+            lastPointLocation = GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude)
             currentLocationGeoPoint = GeoPoint.init(latitude: locValue.latitude, longitude: locValue.longitude)
             if let userId = UserDefaults.standard.string(forKey: "userId") {
                 if userId != "" {
                     Firestore.firestore().collection("driver").document(userId).updateData(["currentLocation":currentLocationGeoPoint])
-                    modelUserDetail = ModelUserDetail.init(Dict: DictUserDetails ?? ["":""])
                }
             }
         }

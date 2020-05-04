@@ -9,17 +9,21 @@
 import UIKit
 import Firebase
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController,CountryCodeDelegate {
     
     @IBOutlet weak var txtEmailPhone:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var btnLogin:UIButton!
     @IBOutlet weak var btnRegister:UIButton!
     @IBOutlet weak var indicator:UIActivityIndicatorView!
+    @IBOutlet weak var btnCountryCode:UIButton!
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    func onSelectCountry(countryCode: String) {
+        self.btnCountryCode.setTitle(countryCode, for: .normal)
     }
 }
 
@@ -50,7 +54,8 @@ fileprivate extension LoginVC {
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        if (self.txtPassword.text == dict["password"] as? String ?? "") && ((self.txtEmailPhone.text == dict["email"] as? String ?? "") || (self.txtPassword.text == dict["mobile"] as? String ?? "")) {
+                        let mobileNo = (self.btnCountryCode.currentTitle ?? "+91") + (self.txtEmailPhone.text ?? "")
+                        if (self.txtPassword.text == dict["password"] as? String ?? "") && ((self.txtEmailPhone.text == dict["email"] as? String ?? "") || (self.txtEmailPhone.text == dict["mobile"] as? String ?? "") || (mobileNo == dict["mobile"] as? String ?? "")) {
                             UserDefaults.standard.set(document.documentID, forKey: "userId")
                             registeredUser = true
                             self.db.collection("driver").document("\(document.documentID)").updateData(["id":"\(document.documentID)","deviceToken":((firebaseToken == "" ? iosDeviceToken : firebaseToken))])
@@ -74,6 +79,13 @@ fileprivate extension LoginVC {
     @IBAction func registeredAction(sender: UIButton) {
         self.view.endEditing(true)
         goToNextVC(storyBoardID: mainStoryBoard, vc_id: registerVC, currentVC: self)
+    }
+    
+    @IBAction func countruCodeAction(sender: UIButton) {
+        self.view.endEditing(true)
+         let vc = UIStoryboard.init(name: mainStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: "CountryCodeVC") as? CountryCodeVC
+        vc?.delegat = self
+        self.present(vc ?? CountryCodeVC(), animated: true, completion: nil)
     }
     
     @IBAction func forgotAction(sender: UIButton) {

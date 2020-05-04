@@ -26,6 +26,9 @@
 		EE3BC7BC2412B17A0075C28E /* helvetica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE67719C240C320C00DE8D25 /* helvetica.ttf */; };
 		EE3BC7BD2412B17D0075C28E /* myriad.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE67719E240C321C00DE8D25 /* myriad.ttf */; };
 		EE3BC7BE2412B17F0075C28E /* museo700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE67719D240C321500DE8D25 /* museo700.ttf */; };
+		EE3CF21E245FBD19005A8954 /* countrycode.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE3CF21D245FBD19005A8954 /* countrycode.txt */; };
+		EE3CF221245FBD81005A8954 /* CountryCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3CF220245FBD81005A8954 /* CountryCodeCell.swift */; };
+		EE3CF223245FBEE4005A8954 /* CountryCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3CF222245FBEE4005A8954 /* CountryCodeVC.swift */; };
 		EE3D2363244CCA210097EB83 /* CabDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3D2362244CCA210097EB83 /* CabDetailViewController.swift */; };
 		EE40FC6C2413CA98002A5076 /* ModelMyRides.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE40FC6B2413CA98002A5076 /* ModelMyRides.swift */; };
 		EE53D4C7241977CD00111C7D /* PickerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE53D4C6241977CD00111C7D /* PickerViewVC.swift */; };
@@ -92,6 +95,9 @@
 		EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EE38A9F1240AA57900E97C34 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		EE38A9F5240AC47E00E97C34 /* CompleteRideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRideVC.swift; sourceTree = "<group>"; };
+		EE3CF21D245FBD19005A8954 /* countrycode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countrycode.txt; sourceTree = "<group>"; };
+		EE3CF220245FBD81005A8954 /* CountryCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeCell.swift; sourceTree = "<group>"; };
+		EE3CF222245FBEE4005A8954 /* CountryCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeVC.swift; sourceTree = "<group>"; };
 		EE3D2362244CCA210097EB83 /* CabDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabDetailViewController.swift; sourceTree = "<group>"; };
 		EE40FC6B2413CA98002A5076 /* ModelMyRides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMyRides.swift; sourceTree = "<group>"; };
 		EE53D4C6241977CD00111C7D /* PickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewVC.swift; sourceTree = "<group>"; };
@@ -243,6 +249,14 @@
 			path = Cab;
 			sourceTree = "<group>";
 		};
+		EE3CF21F245FBD6F005A8954 /* CellClasses */ = {
+			isa = PBXGroup;
+			children = (
+				EE3CF220245FBD81005A8954 /* CountryCodeCell.swift */,
+			);
+			path = CellClasses;
+			sourceTree = "<group>";
+		};
 		EE677196240C2E0800DE8D25 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +316,7 @@
 		EE71EF0F2406C17B00B6028D /* SetUp */ = {
 			isa = PBXGroup;
 			children = (
+				EE3CF21F245FBD6F005A8954 /* CellClasses */,
 				EEA7364E2454973F008A60D3 /* Model */,
 				EED8543C240556D900E225EE /* LoginVC.swift */,
 				EE71EF1F2406E14700B6028D /* RegisterVC.swift */,
@@ -315,6 +330,7 @@
 		EE71EF102406C23700B6028D /* HelpersDriver */ = {
 			isa = PBXGroup;
 			children = (
+				EE3CF21D245FBD19005A8954 /* countrycode.txt */,
 				EE67719B240C31E700DE8D25 /* CustomeClass */,
 				EE67719A240C31D100DE8D25 /* SWReveal */,
 				EE677199240C31C500DE8D25 /* Font */,
@@ -339,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA7364F2454975C008A60D3 /* ModelUserDetail.swift */,
+				EE3CF222245FBEE4005A8954 /* CountryCodeVC.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -529,6 +546,7 @@
 			files = (
 				EED85445240556E500E225EE /* LaunchScreen.storyboard in Resources */,
 				EE687124241BD89E00A1C0AF /* GoogleService-Info.plist in Resources */,
+				EE3CF21E245FBD19005A8954 /* countrycode.txt in Resources */,
 				EED85442240556E500E225EE /* Assets.xcassets in Resources */,
 				EE3BC7BE2412B17F0075C28E /* museo700.ttf in Resources */,
 				EED85440240556D900E225EE /* Main.storyboard in Resources */,
@@ -710,6 +728,7 @@
 				EE38A9F6240AC47E00E97C34 /* CompleteRideVC.swift in Sources */,
 				EE71EF172406C25D00B6028D /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				EEE496362407FD7C00C0734B /* AppShareClass.swift in Sources */,
+				EE3CF223245FBEE4005A8954 /* CountryCodeVC.swift in Sources */,
 				EED85439240556D900E225EE /* AppDelegate.swift in Sources */,
 				EE40FC6C2413CA98002A5076 /* ModelMyRides.swift in Sources */,
 				EE058D62241C17E7000E3FE0 /* CellWallet.swift in Sources */,
@@ -727,6 +746,7 @@
 				EE53D4C7241977CD00111C7D /* PickerViewVC.swift in Sources */,
 				EEA736502454975C008A60D3 /* ModelUserDetail.swift in Sources */,
 				EE1FD6CB245D60A900EF76AA /* UpdateDocVC.swift in Sources */,
+				EE3CF221245FBD81005A8954 /* CountryCodeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

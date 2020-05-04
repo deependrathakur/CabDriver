@@ -92,8 +92,8 @@ fileprivate extension UploadDocVC {
             userDict["documentFile"] = docDict
             userDict["deviceToken"] = (firebaseToken == "") ? iosDeviceToken : firebaseToken
             userDict["created"] = Date()
-            
-            ref = db.collection("driver").addDocument(data: userDict) { err in
+            userDict["currentLocation"] = currentLocationGeoPoint
+                ref = db.collection("driver").addDocument(data: userDict) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {

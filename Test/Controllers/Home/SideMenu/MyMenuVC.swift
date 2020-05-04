@@ -150,6 +150,7 @@ extension MyMenuVC{
     
     @IBAction func logOutAction(sender: UIButton) {
         UserDefaults.standard.set(false, forKey: "isLogin")
+        UserDefaults.standard.set("", forKey: "userId")
         DictUserDetails = ["":""]
         let sb: UIStoryboard = UIStoryboard(name: mainStoryBoard, bundle:Bundle.main)
         let vcNew = sb.instantiateViewController(withIdentifier: "main") as? UINavigationController
