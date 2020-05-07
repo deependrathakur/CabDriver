@@ -955,13 +955,22 @@
                                             <constraint firstItem="nDI-kC-64Y" firstAttribute="leading" secondItem="yaW-bn-IrX" secondAttribute="leading" constant="15" id="vve-Lq-mlL"/>
                                         </constraints>
                                     </scrollView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="OeS-Xu-Oma">
+                                        <rect key="frame" x="1" y="1" width="412" height="816"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.21564150530000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yaW-bn-IrX" firstAttribute="top" secondItem="HL8-Pw-xLK" secondAttribute="top" id="8gv-0W-cwZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="OeS-Xu-Oma" secondAttribute="bottom" constant="1" id="EI5-dn-25W"/>
+                                    <constraint firstItem="OeS-Xu-Oma" firstAttribute="leading" secondItem="HL8-Pw-xLK" secondAttribute="leading" constant="1" id="RId-2g-vB0"/>
+                                    <constraint firstAttribute="trailing" secondItem="OeS-Xu-Oma" secondAttribute="trailing" constant="1" id="eEs-HJ-My7"/>
                                     <constraint firstAttribute="bottom" secondItem="yaW-bn-IrX" secondAttribute="bottom" id="fwm-Vs-YpD"/>
                                     <constraint firstAttribute="trailing" secondItem="yaW-bn-IrX" secondAttribute="trailing" id="jR0-fn-yHJ"/>
                                     <constraint firstItem="yaW-bn-IrX" firstAttribute="leading" secondItem="HL8-Pw-xLK" secondAttribute="leading" id="lZ4-58-Ho7"/>
+                                    <constraint firstItem="OeS-Xu-Oma" firstAttribute="top" secondItem="HL8-Pw-xLK" secondAttribute="top" constant="1" id="nsY-Xe-WwT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -977,6 +986,7 @@
                     <navigationItem key="navigationItem" id="krW-Fx-pc8"/>
                     <connections>
                         <outlet property="btnVerify" destination="nyF-Vm-bsw" id="wT2-6X-CBF"/>
+                        <outlet property="indicator" destination="OeS-Xu-Oma" id="9Qx-Nh-N4j"/>
                         <outlet property="lblMobile" destination="u5T-Bf-V9g" id="ahy-kn-kwn"/>
                         <outlet property="txtOTP" destination="gC9-CW-OhE" id="fqW-QH-Est"/>
                     </connections>

@@ -5,9 +5,11 @@
 //  Copyright © 2020 Deependra. All rights reserved.
 //
 import UIKit
-
+import FirebaseAuth
 import Firebase
-class RegisterVC: UIViewController,CountryCodeDelegate {
+
+class RegisterVC: UIViewController,CountryCodeDelegate,AuthUIDelegate {
+
     @IBOutlet weak var txtFullName:UITextField!
     @IBOutlet weak var txtEmail:UITextField!
     @IBOutlet weak var txtMobile:UITextField!
@@ -57,7 +59,7 @@ fileprivate extension RegisterVC {
             self.indicator.isHidden = false
             let mobileNo = (self.btnCountryCode.currentTitle ?? "+91") + (self.txtMobile.text ?? "")
             let dict = ["available": true, "busy" : false, "cabAdded" : true, "cab_type": "micro", "currentLocation": "",
-                        "deviceToken": "",
+                        "deviceToken": (firebaseToken == "") ? iosDeviceToken : firebaseToken,
                         "documentAdded": true,
                         "gender":"", "id":"",
                         "verified":true,
@@ -68,9 +70,25 @@ fileprivate extension RegisterVC {
                 "userType":1,
                 "name":self.txtFullName.text ?? ""
                 ] as [String : Any]
-            let vc = UIStoryboard.init(name: mainStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: cabDetailViewController) as? CabDetailViewController
-            vc?.userDict = dict
-            self.navigationController?.pushViewController(vc ?? UploadDocVC(), animated: true)
+            self.phoneVarification(mobile: mobileNo,Dict: dict)
+        }
+    }
+    
+    func phoneVarification(mobile: String,Dict: [String:Any]) {
+        self.indicator.isHidden = false
+        PhoneAuthProvider.provider().verifyPhoneNumber(mobile, uiDelegate: self) { (verificationID, error) in
+            if ((error) != nil) {
+                self.indicator.isHidden = true
+                  print(error)
+            } else {
+                self.indicator.isHidden = true
+                  UserDefaults.standard.set(verificationID, forKey: "firebase_verification")
+                  UserDefaults.standard.synchronize()
+                if let vc = UIStoryboard.init(name: mainStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: otpVC) as? OTPVC {
+                    vc.driverDict = Dict
+                  self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }
     }
     
@@ -80,5 +98,4 @@ fileprivate extension RegisterVC {
         vc?.delegat = self
         self.present(vc ?? CountryCodeVC(), animated: true, completion: nil)
     }
-    
 }

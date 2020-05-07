@@ -125,10 +125,7 @@ fileprivate extension MyRidesVC {
                     let modelObject = ModelMyRides.init(dict: document.data())
                     modelObject.bookingId = "\(document.documentID)"
                     if let userId = UserDefaults.standard.string(forKey: "userId") {
-                        
                         print(userId, "<><><><",  modelObject.driverId)
-                        
-                        
                         if userId != "" && userId == modelObject.driverId {
                             if self.selectSegment == 0 && (modelObject.status == "1" || modelObject.status == "2" || modelObject.status == "3") {
                                 self.arrBooking.append(modelObject)

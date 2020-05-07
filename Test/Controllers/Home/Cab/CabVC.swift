@@ -59,9 +59,9 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
         self.vwPopup.isHidden = true
         UserDefaults.standard.set(cabVC, forKey: "vc")
         AppDelegate().getUserDetailFromFirebase()
-        if isFromNotification == true {
-            self.bookingId = bookingIds
-        }
+       // if isFromNotification == true {
+            self.bookingId = "kTLkoV4Z6BNGZv9222kB"//bookingIds
+       // }
         self.getBookingData()
         parseDataInField()
         UserDetails()
@@ -117,10 +117,10 @@ fileprivate extension CabVC {
                         print("<><><><><>")
                         self.bookingDict = ModelMyRides.init(dict: document)
                         self.parseDataInField()
-                        if self.bookingDict.status == "1" && isFromNotification == true {
+                      //  if self.bookingDict.status == "1" && isFromNotification == true {
                             self.vwPopup.isHidden = false
                             isFromNotification = false
-                        }
+                     //   }
                     }
                 }
             }

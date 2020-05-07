@@ -11,8 +11,9 @@ import Firebase
 import MapKit
 import GooglePlaces
 import GoogleMaps
+import FirebaseAuth
 
-class WaitingForCustomerVC: UIViewController, SWRevealViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate {
+class WaitingForCustomerVC: UIViewController, SWRevealViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate, UITextFieldDelegate, AuthUIDelegate {
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var txtPicupLocation:UITextField!
     @IBOutlet weak var txtDroupLocation:UITextField!
@@ -20,7 +21,7 @@ class WaitingForCustomerVC: UIViewController, SWRevealViewControllerDelegate, CL
     @IBOutlet weak var imgUser:UIImageView!
     @IBOutlet weak var txtOTP: UITextField!
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var indicator:UIActivityIndicatorView!
     @IBOutlet weak var btnCancelRide:UIButton!
     @IBOutlet weak var btnCompleteRide:UIButton!
     @IBOutlet weak var btnStartRide:UIButton!
@@ -37,6 +38,7 @@ class WaitingForCustomerVC: UIViewController, SWRevealViewControllerDelegate, CL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.indicator.isHidden = true
         self.txtOTP.delegate = self
         mapView.delegate = self
         locationManager.delegate = self
@@ -99,6 +101,8 @@ extension WaitingForCustomerVC {
         self.view.endEditing(true)
         if sender.tag == 1 && self.txtOTP.isEmptyText() {
             showAlertVC(title: kAlertTitle, message: "Please enter OTP", controller: self)
+        } else if sender.tag == 1 {
+            self.verifyCode()
         } else {
             clickRideAction(senderTag: sender.tag)
         }
@@ -111,12 +115,6 @@ extension WaitingForCustomerVC {
         mapView.setRegion(region, animated: true)
     }
     func clickRideAction(senderTag:Int) {
-        
-        //        if let userId = UserDefaults.standard.string(forKey: "userId") {
-        //            let updatedDict = ["status":1, "driverId":"userId"] as [String : Any]
-        //            self.db.collection("booking").document(bookingId).updateData(updatedDict)
-        //        }
-        
         var message = ""
         if senderTag == 0 {
             //i have arrived
@@ -135,7 +133,6 @@ extension WaitingForCustomerVC {
             
         } else {
             message = ""
-            
         }
         let alertController = UIAlertController(title: kAlertTitle, message: message, preferredStyle: .alert)
         let subView = alertController.view.subviews.first!
@@ -146,21 +143,27 @@ extension WaitingForCustomerVC {
             if senderTag == 0 {
                 //i have arrived
                 self.rideStatus = 2
+                self.phoneVarification(mobile: modelUserDetail?.mobile ?? "00000")
             } else if senderTag == 1 {
                 //start ride
                 self.rideStatus = 3
+                let updatedDict = ["status":self.rideStatus,] as [String : Any]
+                self.db.collection("booking").document(self.bookingId).updateData(updatedDict)
+                self.manageUI_OnStatus()
             } else if senderTag == 2 {
                 //complete ride
                 self.rideStatus = 4
+                let updatedDict = ["status":self.rideStatus,] as [String : Any]
+                self.db.collection("booking").document(self.bookingId).updateData(updatedDict)
+                self.manageUI_OnStatus()
             } else if senderTag == 3 {
                 //cancel booking
                 self.rideStatus = 5
+                let updatedDict = ["status":self.rideStatus,] as [String : Any]
+                self.db.collection("booking").document(self.bookingId).updateData(updatedDict)
+                self.manageUI_OnStatus()
             }
-            let updatedDict = ["status":self.rideStatus,] as [String : Any]
-            self.db.collection("booking").document(self.bookingId).updateData(updatedDict)
-            self.manageUI_OnStatus()
         })
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
         }
@@ -246,5 +249,38 @@ extension WaitingForCustomerVC {
     }
     func sideMenuDidOpen() {
         print("sideMenuDidOpen")
+    }
+    
+    func phoneVarification(mobile: String) {
+        PhoneAuthProvider.provider().verifyPhoneNumber("+919025223780", uiDelegate: self) { (verificationID, error) in
+            self.indicator.isHidden = false
+            if (error) != nil {
+                self.indicator.isHidden = true
+                print(error)
+            } else {
+                self.indicator.isHidden = true
+                UserDefaults.standard.set(verificationID, forKey: "ride_otp")
+                UserDefaults.standard.synchronize()
+                let updatedDict = ["status":self.rideStatus,] as [String : Any]
+                self.db.collection("booking").document(self.bookingId).updateData(updatedDict)
+                self.manageUI_OnStatus()
+            }
+        }
+    }
+    
+    func verifyCode() {
+        let verificationID = UserDefaults.standard.value(forKey: "ride_otp")
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID! as! String, verificationCode: self.txtOTP.text ?? "")
+        self.indicator.isHidden = false
+        
+        Auth.auth().signIn(with: credential) { (response, error) in
+            if error == nil {
+                self.indicator.isHidden = true
+                self.clickRideAction(senderTag: 1)
+            } else {
+                self.indicator.isHidden = true
+                showAlertVC(title: kAlertTitle, message: kErrorMessage, controller: self)
+            }
+        }
     }
 }

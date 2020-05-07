@@ -536,29 +536,29 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgf-Eb-Kx1">
-                                                <rect key="frame" x="40" y="94.5" width="334" height="465"/>
+                                                <rect key="frame" x="40" y="95" width="334" height="464.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNz-n0-0iH">
-                                                        <rect key="frame" x="139" y="10" width="56" height="29.5"/>
+                                                        <rect key="frame" x="138.5" y="10" width="57" height="29"/>
                                                         <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20 KM,20 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-d3-z9c">
-                                                        <rect key="frame" x="99" y="119.5" width="136" height="23.5"/>
+                                                        <rect key="frame" x="96" y="119" width="142.5" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carWhite" translatesAutoresizingMaskIntoConstraints="NO" id="SrJ-X8-G7x">
-                                                        <rect key="frame" x="127" y="39.5" width="80" height="80"/>
+                                                        <rect key="frame" x="127" y="39" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="2Wq-SG-kof"/>
                                                             <constraint firstAttribute="height" constant="80" id="UYA-Qe-4O2"/>
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcJ-OK-56H">
-                                                        <rect key="frame" x="0.0" y="151" width="334" height="314"/>
+                                                        <rect key="frame" x="0.0" y="150.5" width="334" height="314"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f31-PU-hFK" customClass="viewBorder" customModule="CabDriver" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="8" width="318" height="77"/>
@@ -574,7 +574,7 @@
                                                                                 </constraints>
                                                                             </view>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rec" translatesAutoresizingMaskIntoConstraints="NO" id="acK-bL-TkB">
-                                                                                <rect key="frame" x="10" y="11.5" width="20" height="15"/>
+                                                                                <rect key="frame" x="10" y="11" width="20" height="15"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="20" id="QvA-xA-xLz"/>
@@ -582,7 +582,7 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pickup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Vb-yY-Qgb">
-                                                                                <rect key="frame" x="38" y="1.5" width="268" height="35"/>
+                                                                                <rect key="frame" x="38" y="1" width="268" height="35"/>
                                                                                 <color key="tintColor" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="35" id="nrO-t4-o59"/>
@@ -592,14 +592,14 @@
                                                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                                             </textField>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dot" translatesAutoresizingMaskIntoConstraints="NO" id="qVs-A8-sBw">
-                                                                                <rect key="frame" x="10" y="27" width="20" height="19"/>
+                                                                                <rect key="frame" x="10" y="26.5" width="20" height="19"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="20" id="FIa-Fo-pbK"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Cjo-wG-aqK">
-                                                                                <rect key="frame" x="10" y="46.5" width="20" height="20"/>
+                                                                                <rect key="frame" x="10" y="46" width="20" height="20"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="20" id="ICi-aI-Dcb"/>
@@ -607,7 +607,7 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dropup Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jIW-wM-AG9">
-                                                                                <rect key="frame" x="38" y="39" width="268" height="35"/>
+                                                                                <rect key="frame" x="38" y="38.5" width="268" height="35"/>
                                                                                 <color key="tintColor" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="35" id="D7Q-dg-mgP"/>
@@ -1968,13 +1968,13 @@
                                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyC-xV-het">
-                                                                <rect key="frame" x="179" y="10" width="56" height="29"/>
+                                                                <rect key="frame" x="178.5" y="10" width="57" height="29"/>
                                                                 <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="25"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today at 05:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoa-6J-A7y">
-                                                                <rect key="frame" x="136" y="119" width="142.5" height="20"/>
+                                                                <rect key="frame" x="132" y="119" width="150.5" height="20"/>
                                                                 <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -2715,13 +2715,13 @@
                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oz-5w-Dte">
-                                                <rect key="frame" x="179" y="10" width="56" height="29"/>
+                                                <rect key="frame" x="178.5" y="10" width="57" height="29"/>
                                                 <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avilable Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KS-J0-wGk">
-                                                <rect key="frame" x="144.5" y="44" width="125" height="20"/>
+                                                <rect key="frame" x="140.5" y="44" width="133.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2888,8 +2888,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBg-hR-clZ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzX-P5-g97">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzX-P5-g97">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcO-NK-UvM">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="58"/>
@@ -3260,15 +3260,24 @@
                                             <constraint firstItem="KK2-yJ-bHY" firstAttribute="centerY" secondItem="HV4-CS-67l" secondAttribute="centerY" priority="750" id="vKF-Xh-CcD"/>
                                         </constraints>
                                     </scrollView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="QtK-pk-Z4g">
+                                        <rect key="frame" x="1" y="1" width="412" height="816"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.50288842429577463" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="HV4-CS-67l" firstAttribute="top" secondItem="fzX-P5-g97" secondAttribute="bottom" id="4L8-FJ-RVZ"/>
+                                    <constraint firstItem="QtK-pk-Z4g" firstAttribute="top" secondItem="DBg-hR-clZ" secondAttribute="top" constant="1" id="5IR-Af-0cc"/>
+                                    <constraint firstItem="QtK-pk-Z4g" firstAttribute="leading" secondItem="DBg-hR-clZ" secondAttribute="leading" constant="1" id="AVV-Re-6Wj"/>
                                     <constraint firstAttribute="trailing" secondItem="HV4-CS-67l" secondAttribute="trailing" id="KuJ-Gh-sC2"/>
+                                    <constraint firstAttribute="bottom" secondItem="QtK-pk-Z4g" secondAttribute="bottom" constant="1" id="PIv-bA-onE"/>
                                     <constraint firstAttribute="bottom" secondItem="HV4-CS-67l" secondAttribute="bottom" id="Qeu-wW-tc7"/>
                                     <constraint firstItem="fzX-P5-g97" firstAttribute="top" secondItem="DBg-hR-clZ" secondAttribute="top" id="WeY-B9-BhF"/>
                                     <constraint firstItem="HV4-CS-67l" firstAttribute="leading" secondItem="DBg-hR-clZ" secondAttribute="leading" id="dxT-Zw-ji4"/>
                                     <constraint firstAttribute="trailing" secondItem="fzX-P5-g97" secondAttribute="trailing" id="gD2-5O-n8J"/>
+                                    <constraint firstAttribute="trailing" secondItem="QtK-pk-Z4g" secondAttribute="trailing" constant="1" id="tmJ-fK-tY1"/>
                                     <constraint firstItem="fzX-P5-g97" firstAttribute="leading" secondItem="DBg-hR-clZ" secondAttribute="leading" id="x1x-Fu-2e2"/>
                                 </constraints>
                             </view>
@@ -3289,6 +3298,7 @@
                         <outlet property="btnCompleteRide" destination="tPY-oV-U4k" id="p1i-3T-m5e"/>
                         <outlet property="btnStartRide" destination="MHM-2a-rDF" id="qKy-0O-38q"/>
                         <outlet property="imgUser" destination="3Rc-TC-rvU" id="Eq2-vv-5Oh"/>
+                        <outlet property="indicator" destination="QtK-pk-Z4g" id="fkI-j2-BJP"/>
                         <outlet property="lblHeader" destination="LXJ-FE-C50" id="E3o-Qe-TaA"/>
                         <outlet property="lblName" destination="YJ4-ac-ePb" id="zmr-cL-o1E"/>
                         <outlet property="mapView" destination="7aT-jN-Uzn" id="u4f-ui-S8x"/>
@@ -3300,7 +3310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIW-7W-aj2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-703" y="-828"/>
+            <point key="canvasLocation" x="-704.34782608695662" y="-828.34821428571422"/>
         </scene>
     </scenes>
     <resources>
