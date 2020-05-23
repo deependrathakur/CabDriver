@@ -47,7 +47,7 @@ class WaitingForCustomerVC: UIViewController, SWRevealViewControllerDelegate, CL
         locationManager.requestWhenInUseAuthorization()
         menuButton.addTarget(revealViewController, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.revealViewController().delegate = self
-        revealViewController()?.rearViewRevealWidth = 60
+        revealViewController()?.rearViewRevealWidth = 80
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -193,6 +193,9 @@ extension WaitingForCustomerVC {
             self.btnCompleteRide.isHidden = false
             self.lblHeader.text = "On The Way"
         } else if rideStatus == 4 {
+            if modelUserDetail?.id != "" && modelUserDetail?.id != nil {
+                self.db.collection("driver").document(modelUserDetail?.id ?? ".").updateData(["available":true])
+            }
             let vc = UIStoryboard.init(name: homeStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: completeRideVC) as? CompleteRideVC
             vc?.rideStatus = rideStatus
             vc?.bookingId = bookingId
@@ -252,7 +255,7 @@ extension WaitingForCustomerVC {
     }
     
     func phoneVarification(mobile: String) {
-        PhoneAuthProvider.provider().verifyPhoneNumber("+919025223780", uiDelegate: self) { (verificationID, error) in
+        PhoneAuthProvider.provider().verifyPhoneNumber(mobile, uiDelegate: self) { (verificationID, error) in
             self.indicator.isHidden = false
             if (error) != nil {
                 self.indicator.isHidden = true

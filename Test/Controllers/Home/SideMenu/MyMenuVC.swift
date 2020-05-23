@@ -13,6 +13,8 @@ class MyMenuVC: UIViewController, UITableViewDelegate,UITableViewDataSource,SWRe
     // Fro Vendor
     var arrImgOptions:[UIImage] = []
     var arrSelectedImgOptions:[UIImage] = []
+    var arrOptions:[String] = []
+
     @IBOutlet weak var viewForSide: UIView!
     @IBOutlet weak var tableSide: UITableView!
     
@@ -87,6 +89,7 @@ extension MyMenuVC{
         tableSide.delegate = self
         tableSide.dataSource = self
         arrImgOptions = [#imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "vehicleGray"),#imageLiteral(resourceName: "timeGray"),#imageLiteral(resourceName: "walleGray"),#imageLiteral(resourceName: "userGray")]
+        arrOptions = ["","Bookings","Rides","Wallet","Profile"]
         arrSelectedImgOptions = [#imageLiteral(resourceName: "close"),#imageLiteral(resourceName: "vehicle"),#imageLiteral(resourceName: "time"),#imageLiteral(resourceName: "wallet"),#imageLiteral(resourceName: "user")]
         tableSide.reloadData()
     }
@@ -103,16 +106,19 @@ extension MyMenuVC{
     {
         let cellIdentifier = "cellForSideIdentifier"
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? MyMenuCell{
+            cell.lblTitle.text = arrOptions[indexPath.row]
+
             if indexPath.row == 0 {
                 cell.backgroundColor = appColor
             } else {
                 cell.backgroundColor = whiteColor
             }
             cell.imgOption.image = arrImgOptions[indexPath.row]
-            
+            cell.lblTitle.textColor = grayColor
             let vcId = ["", cabVC, myRidesVC, walletVC, userProfileVC]
             if  vcId[indexPath.row] == UserDefaults.standard.string(forKey: "vc") {
                 cell.imgOption.image = arrSelectedImgOptions[indexPath.row]
+                cell.lblTitle.textColor = appColor
             }
             if UserDefaults.standard.string(forKey: "vc") == waitingForCustomerVC && indexPath.row == 1 {
                 cell.imgOption.image = #imageLiteral(resourceName: "vehicle")

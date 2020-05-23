@@ -19,14 +19,16 @@ class RegisterVC: UIViewController,CountryCodeDelegate,AuthUIDelegate {
     @IBOutlet weak var btnRegister:UIButton!
     @IBOutlet weak var btnCountryCode:UIButton!
 
+    var countryCodes = "+91"
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicator.isHidden = true
     }
     
-    func onSelectCountry(countryCode: String) {
-        self.btnCountryCode.setTitle(countryCode, for: .normal)
+    func onSelectCountry(countryCode: String,countryName: String) {
+        countryCodes = countryCode
+        self.btnCountryCode.setTitle("(\(countryName)) \(countryCode)", for: .normal)
     }
 }
 
@@ -57,7 +59,7 @@ fileprivate extension RegisterVC {
             self.txtPassword.shakeTextField()
         } else {
             self.indicator.isHidden = false
-            let mobileNo = (self.btnCountryCode.currentTitle ?? "+91") + (self.txtMobile.text ?? "")
+            let mobileNo = self.countryCodes + (self.txtMobile.text ?? "")
             let dict = ["available": true, "busy" : false, "cabAdded" : true, "cab_type": "micro", "currentLocation": "",
                         "deviceToken": (firebaseToken == "") ? iosDeviceToken : firebaseToken,
                         "documentAdded": true,

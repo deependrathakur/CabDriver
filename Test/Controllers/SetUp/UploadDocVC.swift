@@ -93,21 +93,59 @@ fileprivate extension UploadDocVC {
             userDict["deviceToken"] = (firebaseToken == "") ? iosDeviceToken : firebaseToken
             userDict["created"] = Date()
             userDict["currentLocation"] = currentLocationGeoPoint
-                ref = db.collection("driver").addDocument(data: userDict) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added with ID: \(ref!.documentID)")
-                    UserDefaults.standard.set("\(ref!.documentID)", forKey: "userId")
-                    UserDefaults.standard.set(true, forKey: "isLogin")
-                    DictUserDetails = self.userDict
-                    modelUserDetail = ModelUserDetail.init(Dict: DictUserDetails ?? ["":""])
-                self.db.collection("driver").document("\(ref!.documentID)").updateData(["id":"\(ref!.documentID)"])
-                    setNavigationRootStoryboard()
+            checkIfRegistered(currentDict: userDict)
+            }
+        }
+    
+    
+    func checkIfRegistered(currentDict: [String:Any]) {
+        self.indicator.isHidden = false
+        db.collection("driver").getDocuments() { (querySnapshot, err) in
+            var registeredUser = false
+            var userId:String = ""
+            if let err = err {
+                self.indicator.isHidden = true
+                print("Error getting documents: \(err)")
+            } else {
+                let mobileNo = self.userDict["mibile"] ?? ""
+                for document in querySnapshot!.documents {
+                    let dict = document.data()
+                    let mobileNo = self.userDict["mibile"] as? String ?? ""
+                    if (mobileNo == dict["mobile"] as? String ?? "") {
+                        registeredUser = true
+                        userId = document.documentID
+                    }
+                }
+            }
+            if registeredUser, (userId != "") {
+                self.indicator.isHidden = true
+                UserDefaults.standard.set(true, forKey: "isLogin")
+                self.db.collection("driver").document(userId).updateData(currentDict)
+                modelUserDetail = ModelUserDetail.init(Dict: currentDict)
+                UserDefaults.standard.set(userId, forKey: "userId")
+                AppDelegate().getUserDetailFromFirebase()
+                setNavigationRootStoryboard()
+            } else {
+                var ref: DocumentReference? = nil
+                ref = self.db.collection("driver").addDocument(data: currentDict) { err in
+                    if let err = err {
+                        self.indicator.isHidden = true
+                        print("Error adding document: \(err)")
+                    } else {
+                        self.indicator.isHidden = true
+                        print("Document added with ID: \(ref!.documentID)")
+                        UserDefaults.standard.set("\(ref!.documentID)", forKey: "userId")
+                    self.db.collection("driver").document("\(ref!.documentID)").updateData(["id":"\(ref!.documentID)","deviceToken":((firebaseToken == "" ? iosDeviceToken : firebaseToken))])
+                        DictUserDetails = currentDict
+                        modelUserDetail = ModelUserDetail.init(Dict: DictUserDetails ?? ["":""])
+                        UserDefaults.standard.set(true, forKey: "isLogin")
+                        setNavigationRootStoryboard()
+                    }
                 }
             }
         }
     }
+    
     @IBAction func backAction(sender: UIButton) {
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)

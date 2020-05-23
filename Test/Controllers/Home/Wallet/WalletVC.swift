@@ -27,7 +27,7 @@ class WalletVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SW
         self.getBookingList()
         menuButton.addTarget(revealViewController, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.revealViewController().delegate=self
-        revealViewController()?.rearViewRevealWidth = 60
+        revealViewController()?.rearViewRevealWidth = 80
     }
     
     override func viewDidAppear(_ animated: Bool) {

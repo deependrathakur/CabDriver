@@ -45,26 +45,43 @@ class CabVC: UIViewController, SWRevealViewControllerDelegate, UITextFieldDelega
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        
+        AppDelegate().getUserDetailFromFirebase()
         self.txtPicupLocationPopup.delegate = self
         self.txtDroupLocationPopup.delegate = self
         
         self.vwPopup.isHidden = true
         menuButton.addTarget(revealViewController, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.revealViewController().delegate = self
-        revealViewController()?.rearViewRevealWidth = 60
+        revealViewController()?.rearViewRevealWidth = 80
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.vwPopup.isHidden = true
         UserDefaults.standard.set(cabVC, forKey: "vc")
         AppDelegate().getUserDetailFromFirebase()
-       // if isFromNotification == true {
-            self.bookingId = "kTLkoV4Z6BNGZv9222kB"//bookingIds
-       // }
+        if isFromNotification == true {
+            self.bookingId = bookingIds
+        }
         self.getBookingData()
         parseDataInField()
-        UserDetails()
+        getUserDetailFromFirebase()
+    }
+    func getUserDetailFromFirebase() {
+        if let userId = UserDefaults.standard.string(forKey: "userId") {
+            if userId != "" {
+            Firestore.firestore().collection("driver").document(userId).getDocument() { (querySnapshot, err) in
+                    if let err = err {
+                    } else {
+                        let document = querySnapshot
+                        let dict = document?.data()
+                        UserDefaults.standard.set(document?.documentID, forKey: "userId")
+                        DictUserDetails = dict
+                        modelUserDetail = ModelUserDetail.init(Dict: DictUserDetails ?? ["":""])
+                        self.UserDetails()
+                    }
+                }
+            }
+        }
     }
     
     // MARK: MKMapViewDelegate
@@ -117,10 +134,10 @@ fileprivate extension CabVC {
                         print("<><><><><>")
                         self.bookingDict = ModelMyRides.init(dict: document)
                         self.parseDataInField()
-                      //  if self.bookingDict.status == "1" && isFromNotification == true {
+                        if self.bookingDict.status == "1" && isFromNotification == true {
                             self.vwPopup.isHidden = false
                             isFromNotification = false
-                     //   }
+                        }
                     }
                 }
             }
@@ -139,7 +156,7 @@ fileprivate extension CabVC {
         self.txtDroupLocationPopup.text = bookingDict.dropAddress
         self.txtPicupLocationPopup.text = bookingDict.pickupAddress
         self.lblTimeDistance.text = "\(getDistanceInInt()) KM, \(getDistanceInInt()) min"
-        self.lblPrice.text = "$\(Double(getDistanceInInt())*2.5)"
+        self.lblPrice.text = "N$\(Double(getDistanceInInt())*2.5)"
         setupMap()
     }
     
@@ -231,11 +248,7 @@ fileprivate extension CabVC {
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
-    //accept = 1
-    //cancel = 5
-    //arri = 2
-    //start = 3
-    //complet = 4
+
     @IBAction func AvailableBookingAction(sender: UIButton) {
         self.view.endEditing(true)
         if modelUserDetail?.available ?? true {

@@ -19,11 +19,17 @@ class LoginVC: UIViewController,CountryCodeDelegate {
     @IBOutlet weak var btnCountryCode:UIButton!
     let db = Firestore.firestore()
 
+    var countryCodes = "+91"
+    func onSelectCountry(countryCode: String, countryName: String) {
+        self.btnCountryCode.setTitle("(\(countryName)) \(countryCode) ▾", for: .normal)
+        self.btnCountryCode.setTitleColor(appColor, for: .normal)
+        countryCodes = countryCode
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    func onSelectCountry(countryCode: String) {
-        self.btnCountryCode.setTitle(countryCode, for: .normal)
+        self.btnCountryCode.setTitle("(India) \(+91) ▾", for: .normal)
+        self.btnCountryCode.setTitleColor(appColor, for: .normal)
+        countryCodes = "+91"
     }
 }
 
@@ -54,7 +60,8 @@ fileprivate extension LoginVC {
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        let mobileNo = (self.btnCountryCode.currentTitle ?? "+91") + (self.txtEmailPhone.text ?? "")
+                        print("userDetails: ----- \(dict["mobile"] as? String ?? "") --- \(dict["password"] as? String ?? "")")
+                        let mobileNo = self.countryCodes + (self.txtEmailPhone.text ?? "")
                         if (self.txtPassword.text == dict["password"] as? String ?? "") && ((self.txtEmailPhone.text == dict["email"] as? String ?? "") || (self.txtEmailPhone.text == dict["mobile"] as? String ?? "") || (mobileNo == dict["mobile"] as? String ?? "")) {
                             UserDefaults.standard.set(document.documentID, forKey: "userId")
                             registeredUser = true

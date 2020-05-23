@@ -10,7 +10,7 @@ import UIKit
 import CoreTelephony
 
 protocol CountryCodeDelegate
-{  func onSelectCountry(countryCode: String) }
+{  func onSelectCountry(countryCode: String, countryName: String) }
 
 fileprivate class countryCodeData: NSObject {
     
@@ -63,7 +63,26 @@ class CountryCodeVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let objCountry = self.arrToShow[indexPath.row]
         self.countryCode = objCountry.dialCode
-        delegat?.onSelectCountry(countryCode: objCountry.dialCode)
+        let countryNameArr = objCountry.countryName.split(separator: " ")
+        var newName = ""
+        if countryNameArr.count > 1 {
+            for obj in countryNameArr {
+                if let char = obj.first {
+                newName = newName + String(describing:char)
+                }
+            }
+            delegat?.onSelectCountry(countryCode: objCountry.dialCode, countryName: "\(newName)".uppercased())
+        } else {
+            let arrCountryName = Array(objCountry.countryName)
+            if arrCountryName.count > 2 {
+                let f: String = String(arrCountryName[0])
+                let s: String = String(arrCountryName[1])
+                let t: String = String(arrCountryName[2])
+                delegat?.onSelectCountry(countryCode: objCountry.dialCode, countryName: "\(f)\(s)\(t)".uppercased())
+            } else {
+                delegat?.onSelectCountry(countryCode: objCountry.dialCode, countryName: objCountry.countryName)
+            }
+        }
         btnCloseCountryView(0)
     }
 }

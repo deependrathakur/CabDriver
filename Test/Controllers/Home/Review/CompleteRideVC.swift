@@ -34,7 +34,7 @@ extension CompleteRideVC {
     func parseData() {
         self.txtDroupLocation.text = bookingDict.dropAddress
         self.txtPicupLocation.text = bookingDict.pickupAddress
-        self.lblPrice.text = "$"+bookingDict.amount
+        self.lblPrice.text = "N$"+bookingDict.amount
         self.lblTimeDate.text = bookingDict.createdData
     }
 }

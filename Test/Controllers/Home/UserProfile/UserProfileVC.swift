@@ -24,11 +24,12 @@ class UserProfileVC: UIViewController,GMSAutocompleteViewControllerDelegate, SWR
         super.viewDidLoad()
         menuButton.addTarget(revealViewController, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.revealViewController().delegate = self
-        revealViewController()?.rearViewRevealWidth = 60
+        revealViewController()?.rearViewRevealWidth = 80
         self.parseUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        AppDelegate().getUserDetailFromFirebase()
         UserDefaults.standard.set(userProfileVC, forKey: "vc")
     }
     
