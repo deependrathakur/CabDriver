@@ -8,16 +8,34 @@
 
 import UIKit
 import HCSStarRatingView
+import Firebase
 
 class CompleteRideVC: UIViewController {
     @IBOutlet weak var txtPicupLocation:UITextField!
     @IBOutlet weak var txtDroupLocation:UITextField!
-
+    
     @IBOutlet weak var lblPrice:UILabel!
     @IBOutlet weak var lblTimeDate:UILabel!
     
+    let db = Firestore.firestore()
+    
+    var rideStatus = 1
+    var bookingId = ""
+    var bookingDict = ModelMyRides(dict: ["":""])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.parseData()
+    }
+}
+
+//MARK: - custome Method extension
+extension CompleteRideVC {
+    func parseData() {
+        self.txtDroupLocation.text = bookingDict.dropAddress
+        self.txtPicupLocation.text = bookingDict.pickupAddress
+        self.lblPrice.text = "N$"+bookingDict.amount
+        self.lblTimeDate.text = bookingDict.createdData
     }
 }
 
@@ -26,11 +44,11 @@ extension CompleteRideVC {
     
     @IBAction func backAction(sender: UIButton) {
         self.view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        setNavigationRootStoryboard()
     }
     
     @IBAction func submitAction(sender: UIButton) {
         self.view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        setNavigationRootStoryboard()
     }
 }

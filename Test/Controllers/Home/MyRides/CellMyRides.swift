@@ -15,13 +15,13 @@ class CellMyRides: UITableViewCell {
     @IBOutlet weak var lblPicLocation:UILabel!
     @IBOutlet weak var lblDropLocation:UILabel!
     @IBOutlet weak var imgUser:UIImageView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imgUser.imageCorner(cornerRadius: self.imgUser.layer.frame.width/2)
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

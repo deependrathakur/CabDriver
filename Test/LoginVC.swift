@@ -9,17 +9,27 @@
 import UIKit
 import Firebase
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController,CountryCodeDelegate {
     
     @IBOutlet weak var txtEmailPhone:UITextField!
     @IBOutlet weak var txtPassword:UITextField!
     @IBOutlet weak var btnLogin:UIButton!
     @IBOutlet weak var btnRegister:UIButton!
     @IBOutlet weak var indicator:UIActivityIndicatorView!
+    @IBOutlet weak var btnCountryCode:UIButton!
     let db = Firestore.firestore()
 
+    var countryCodes = "+91"
+    func onSelectCountry(countryCode: String, countryName: String) {
+        self.btnCountryCode.setTitle("(\(countryName)) \(countryCode) ▾", for: .normal)
+        self.btnCountryCode.setTitleColor(appColor, for: .normal)
+        countryCodes = countryCode
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnCountryCode.setTitle("(India) \(+91) ▾", for: .normal)
+        self.btnCountryCode.setTitleColor(appColor, for: .normal)
+        countryCodes = "+91"
     }
 }
 
@@ -38,32 +48,32 @@ fileprivate extension LoginVC {
         self.view.endEditing(true)
         if self.txtEmailPhone.isEmptyText() {
             self.txtEmailPhone.shakeTextField()
-        } else if !self.txtEmailPhone.isValidateEmail() {
-            showAlertVC(title: kAlertTitle, message: InvalidEmail, controller: self)
         } else if self.txtPassword.isEmptyText() {
             self.txtPassword.shakeTextField()
         } else {
             self.indicator.isHidden = false
             db.collection("driver").getDocuments() { (querySnapshot, err) in
                 var registeredUser = false
-                var dictUser = [String:Any]()
                 if let err = err {
                     self.indicator.isHidden = true
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
                         let dict = document.data()
-                        if (self.txtPassword.text == dict["password"] as? String ?? "") && ((self.txtEmailPhone.text == dict["email"] as? String ?? "") || (self.txtPassword.text == dict["mobile"] as? String ?? "")) {
+                        print("userDetails: ----- \(dict["mobile"] as? String ?? "") --- \(dict["password"] as? String ?? "")")
+                        let mobileNo = self.countryCodes + (self.txtEmailPhone.text ?? "")
+                        if (self.txtPassword.text == dict["password"] as? String ?? "") && ((self.txtEmailPhone.text == dict["email"] as? String ?? "") || (self.txtEmailPhone.text == dict["mobile"] as? String ?? "") || (mobileNo == dict["mobile"] as? String ?? "")) {
+                            UserDefaults.standard.set(document.documentID, forKey: "userId")
                             registeredUser = true
-                            dictUser = dict
+                            self.db.collection("driver").document("\(document.documentID)").updateData(["id":"\(document.documentID)","deviceToken":((firebaseToken == "" ? iosDeviceToken : firebaseToken))])
+                            DictUserDetails = dict
                         }
                     }
                 }
                 if registeredUser {
                     self.indicator.isHidden = true
                     UserDefaults.standard.set(true, forKey: "isLogin")
-                    dictUser["created"] = ""
-                    UserDefaults.standard.set(dictUser, forKey: "userDetail")
+                    modelUserDetail = ModelUserDetail.init(Dict: DictUserDetails ?? ["":""])
                     setNavigationRootStoryboard()
                 } else {
                     self.indicator.isHidden = true
@@ -76,6 +86,13 @@ fileprivate extension LoginVC {
     @IBAction func registeredAction(sender: UIButton) {
         self.view.endEditing(true)
         goToNextVC(storyBoardID: mainStoryBoard, vc_id: registerVC, currentVC: self)
+    }
+    
+    @IBAction func countruCodeAction(sender: UIButton) {
+        self.view.endEditing(true)
+         let vc = UIStoryboard.init(name: mainStoryBoard, bundle: Bundle.main).instantiateViewController(withIdentifier: "CountryCodeVC") as? CountryCodeVC
+        vc?.delegat = self
+        self.present(vc ?? CountryCodeVC(), animated: true, completion: nil)
     }
     
     @IBAction func forgotAction(sender: UIButton) {

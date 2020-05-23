@@ -12,6 +12,7 @@ class MyMenuCell: UITableViewCell {
 
     @IBOutlet weak var viewOption: UIView!
     @IBOutlet weak var imgOption: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
