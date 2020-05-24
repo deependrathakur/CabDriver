@@ -95,6 +95,7 @@
 		EE38A9F0240AA57900E97C34 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		EE38A9F1240AA57900E97C34 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		EE38A9F5240AC47E00E97C34 /* CompleteRideVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteRideVC.swift; sourceTree = "<group>"; };
+		EE3AAD382479939C009356AE /* CabDriver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CabDriver.entitlements; sourceTree = "<group>"; };
 		EE3CF21D245FBD19005A8954 /* countrycode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = countrycode.txt; sourceTree = "<group>"; };
 		EE3CF220245FBD81005A8954 /* CountryCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeCell.swift; sourceTree = "<group>"; };
 		EE3CF222245FBEE4005A8954 /* CountryCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeVC.swift; sourceTree = "<group>"; };
@@ -385,6 +386,7 @@
 		EED85437240556D900E225EE /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				EE3AAD382479939C009356AE /* CabDriver.entitlements */,
 				EE71EF102406C23700B6028D /* HelpersDriver */,
 				EE71EF0E2406C15C00B6028D /* DelegateClass */,
 				EE71EF0D2406C14400B6028D /* Controllers */,
@@ -921,6 +923,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Test/CabDriver.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DK3AS4BZRG;
@@ -945,6 +948,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Test/CabDriver.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DK3AS4BZRG;

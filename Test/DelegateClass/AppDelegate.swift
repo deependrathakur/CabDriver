@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         self.getCurrentLocation()
+        self.configureNotification()
         return true
     }
     
@@ -97,6 +98,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
 //MARK: Notification method
 extension AppDelegate {
     
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+
+     }
+    @available(iOS 10.0, *)
+    func userNotificationCenter(center: UNUserNotificationCenter, willPresentNotification notification: UNNotification, withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+        //Handle the notification
+    }
+
+    @available(iOS 10.0, *)
+    func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+        //Handle the notification
+    }
+    
         @available(iOS 10.0, *)
         func userNotificationCenter(_ center: UNUserNotificationCenter,
                                     willPresent notification: UNNotification,
@@ -151,6 +165,7 @@ extension AppDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("APNs registration failed: \(error)")
     }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         // Print message ID.
         //      if let messageID = userInfo[gcm] {
@@ -158,6 +173,8 @@ extension AppDelegate {
         //      }
         
         // Print full message.
+        let firebaseAuth = Auth.auth()
+
         print(userInfo)
     }
     
