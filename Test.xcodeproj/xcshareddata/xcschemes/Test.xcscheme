@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EED85434240556D900E225EE"
-               BuildableName = "CabDriver.app"
+               BuildableName = "Taxi Driver.app"
                BlueprintName = "Test"
                ReferencedContainer = "container:Test.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EED85434240556D900E225EE"
-            BuildableName = "CabDriver.app"
+            BuildableName = "Taxi Driver.app"
             BlueprintName = "Test"
             ReferencedContainer = "container:Test.xcodeproj">
          </BuildableReference>
@@ -74,7 +74,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EED85434240556D900E225EE"
-            BuildableName = "CabDriver.app"
+            BuildableName = "Taxi Driver.app"
             BlueprintName = "Test"
             ReferencedContainer = "container:Test.xcodeproj">
          </BuildableReference>
@@ -91,7 +91,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EED85434240556D900E225EE"
-            BuildableName = "CabDriver.app"
+            BuildableName = "Taxi Driver.app"
             BlueprintName = "Test"
             ReferencedContainer = "container:Test.xcodeproj">
          </BuildableReference>

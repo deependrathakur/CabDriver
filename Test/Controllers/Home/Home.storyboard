@@ -33,7 +33,7 @@
         <!--My RidesVC-->
         <scene sceneID="J22-Zs-iAo">
             <objects>
-                <viewController storyboardIdentifier="MyRidesVC" id="oIN-oK-I5j" customClass="MyRidesVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyRidesVC" id="oIN-oK-I5j" customClass="MyRidesVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="csZ-wg-Apg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,7 @@
                                         <color key="backgroundColor" white="0.93275931629999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.93275931629999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellMyRides" rowHeight="150" id="7if-as-TTn" customClass="CellMyRides" customModule="CabDriver" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellMyRides" rowHeight="150" id="7if-as-TTn" customClass="CellMyRides" customModule="Taxi_Driver" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="412" height="150"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7if-as-TTn" id="6Ko-5V-MAN">
@@ -208,7 +208,7 @@
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico_setting" translatesAutoresizingMaskIntoConstraints="NO" id="Idg-a2-deb" customClass="imageBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico_setting" translatesAutoresizingMaskIntoConstraints="NO" id="Idg-a2-deb" customClass="imageBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                     <rect key="frame" x="336" y="69" width="56" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="56" id="74p-QW-YtF"/>
@@ -368,7 +368,7 @@
         <!--CabVC-->
         <scene sceneID="wFX-gw-Qt1">
             <objects>
-                <viewController storyboardIdentifier="CabVC" id="jbe-zU-zkU" customClass="CabVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CabVC" id="jbe-zU-zkU" customClass="CabVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bpa-DM-790">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -490,7 +490,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="mIY-lz-f05"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ak-j8-IuV" customClass="buttonBorder" customModule="CabDriver" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ak-j8-IuV" customClass="buttonBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                 <rect key="frame" x="354" y="659" width="50" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -567,7 +567,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcJ-OK-56H">
                                                         <rect key="frame" x="0.0" y="151" width="334" height="314"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f31-PU-hFK" customClass="viewBorder" customModule="CabDriver" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f31-PU-hFK" customClass="viewBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="8" width="318" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIM-BK-8gg">
@@ -820,7 +820,7 @@
         <!--Picker ViewVC-->
         <scene sceneID="1nJ-kQ-9rU">
             <objects>
-                <viewController storyboardIdentifier="PickerViewVC" id="Zi6-6E-6nC" customClass="PickerViewVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickerViewVC" id="Zi6-6E-6nC" customClass="PickerViewVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O0z-aF-bgM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -896,7 +896,7 @@
         <!--Update Cab DetailVC-->
         <scene sceneID="Lue-RA-QuG">
             <objects>
-                <viewController storyboardIdentifier="UpdateCabDetailVC" id="xOy-no-GDB" customClass="UpdateCabDetailVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateCabDetailVC" id="xOy-no-GDB" customClass="UpdateCabDetailVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0AW-A4-n3d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -925,7 +925,7 @@
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSm-Pm-cPe" customClass="buttonBorder" customModule="CabDriver" customModuleProvider="target">
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSm-Pm-cPe" customClass="buttonBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                 <rect key="frame" x="30" y="479.5" width="344" height="46"/>
                                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -1036,7 +1036,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRe-PN-fvU">
                                                                         <rect key="frame" x="0.0" y="0.0" width="364" height="46"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Brand Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-Yb-6I5" customClass="textFieldBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Brand Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-Yb-6I5" customClass="textFieldBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="46"/>
                                                                                 <color key="backgroundColor" red="0.89411764709999997" green="0.88855251209999997" blue="0.89965941849999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <color key="tintColor" red="0.22352004049999999" green="0.047561280429999998" blue="0.060397692019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1067,7 +1067,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbn-M4-qMa">
                                                                         <rect key="frame" x="0.0" y="66" width="364" height="46"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Model Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="27b-Ur-f7o" customClass="textFieldBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Model Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="27b-Ur-f7o" customClass="textFieldBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="46"/>
                                                                                 <color key="backgroundColor" red="0.89411764709999997" green="0.88855251209999997" blue="0.89965941849999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <color key="tintColor" red="0.22352004049999999" green="0.047561280429999998" blue="0.060397692019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1098,7 +1098,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF6-jQ-Qm3">
                                                                         <rect key="frame" x="0.0" y="132" width="364" height="46"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Color" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8K-Ij-g3C" customClass="textFieldBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Color" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8K-Ij-g3C" customClass="textFieldBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="46"/>
                                                                                 <color key="backgroundColor" red="0.89411764709999997" green="0.88855251209999997" blue="0.89965941849999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <color key="tintColor" red="0.22352004049999999" green="0.047561280429999998" blue="0.060397692019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1129,7 +1129,7 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oQ-kn-tiK">
                                                                         <rect key="frame" x="0.0" y="198" width="364" height="46"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehivle Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LWI-OV-0LI" customClass="textFieldBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehivle Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LWI-OV-0LI" customClass="textFieldBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="364" height="46"/>
                                                                                 <color key="backgroundColor" red="0.89411764709999997" green="0.88855251209999997" blue="0.89965941849999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <color key="tintColor" red="0.22352004049999999" green="0.047561280429999998" blue="0.060397692019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1279,7 +1279,7 @@
         <!--Update DocVC-->
         <scene sceneID="6Yc-XY-FPb">
             <objects>
-                <viewController storyboardIdentifier="UpdateDocVC" id="kbA-Bf-1ms" customClass="UpdateDocVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateDocVC" id="kbA-Bf-1ms" customClass="UpdateDocVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vKN-t4-eon">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1799,7 +1799,7 @@
         <!--My MenuVC-->
         <scene sceneID="3y9-dB-E7b">
             <objects>
-                <viewController storyboardIdentifier="MyMenuVC" id="JuY-fG-OjS" customClass="MyMenuVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyMenuVC" id="JuY-fG-OjS" customClass="MyMenuVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CPe-8w-8Nl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1811,14 +1811,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="762"/>
                                         <color key="backgroundColor" name="WhiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellForSideIdentifier" rowHeight="75" id="qPG-OW-1OT" customClass="MyMenuCell" customModule="CabDriver" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellForSideIdentifier" rowHeight="75" id="qPG-OW-1OT" customClass="MyMenuCell" customModule="Taxi_Driver" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="80" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qPG-OW-1OT" id="dZh-ij-FfS">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="75"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2D-y7-uzm" customClass="CornerView" customModule="CabDriver" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2D-y7-uzm" customClass="CornerView" customModule="Taxi_Driver" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="75"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTx-KE-29Z">
@@ -1863,7 +1863,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp4-zB-aA1" customClass="CornerView" customModule="CabDriver" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp4-zB-aA1" customClass="CornerView" customModule="Taxi_Driver" customModuleProvider="target">
                                         <rect key="frame" x="1" y="782" width="78" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="ZCi-AB-A9g">
@@ -1938,7 +1938,7 @@
         <!--Complete RideVC-->
         <scene sceneID="Okm-1w-ndM">
             <objects>
-                <viewController storyboardIdentifier="CompleteRideVC" id="KPV-AS-Pop" customClass="CompleteRideVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompleteRideVC" id="KPV-AS-Pop" customClass="CompleteRideVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zry-xr-2Tx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2029,7 +2029,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoV-Jb-Ma1">
                                                                 <rect key="frame" x="0.0" y="147" width="414" height="613"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5K-CM-Rdw" customClass="viewBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5K-CM-Rdw" customClass="viewBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                         <rect key="frame" x="8" y="8" width="398" height="77"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnP-eo-dhD">
@@ -2235,7 +2235,7 @@
         <!--User ProfileVC-->
         <scene sceneID="Y8P-ez-baZ">
             <objects>
-                <viewController storyboardIdentifier="UserProfileVC" id="u1U-JY-a9f" customClass="UserProfileVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileVC" id="u1U-JY-a9f" customClass="UserProfileVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7aZ-RE-d7F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2610,7 +2610,7 @@
                                                             <action selector="updateCertificateDetailsWithSender:" destination="u1U-JY-a9f" eventType="touchUpInside" id="sga-Id-c4h"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico_setting" translatesAutoresizingMaskIntoConstraints="NO" id="Ala-YF-ev3" customClass="imageBorder" customModule="CabDriver" customModuleProvider="target">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico_setting" translatesAutoresizingMaskIntoConstraints="NO" id="Ala-YF-ev3" customClass="imageBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                         <rect key="frame" x="167" y="20" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="P4f-pb-tNi"/>
@@ -2697,7 +2697,7 @@
         <!--WalletVC-->
         <scene sceneID="xhW-EQ-29u">
             <objects>
-                <viewController storyboardIdentifier="WalletVC" id="EaR-DU-xnT" customClass="WalletVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalletVC" id="EaR-DU-xnT" customClass="WalletVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6wu-pS-2sj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2791,13 +2791,13 @@
                                                 <color key="backgroundColor" red="0.22352941179999999" green="0.047058823530000002" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$120" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oz-5w-Dte">
-                                                <rect key="frame" x="179" y="10" width="56" height="29"/>
+                                                <rect key="frame" x="178.5" y="10" width="57" height="29"/>
                                                 <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avilable Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KS-J0-wGk">
-                                                <rect key="frame" x="144.5" y="44" width="125" height="20"/>
+                                                <rect key="frame" x="140.5" y="44" width="133.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Museo-700" family="Museo" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2821,7 +2821,7 @@
                                         <color key="backgroundColor" white="0.93275931629999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.93275931629999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWallet" rowHeight="90" id="uwb-0s-LJK" customClass="CellWallet" customModule="CabDriver" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellWallet" rowHeight="90" id="uwb-0s-LJK" customClass="CellWallet" customModule="Taxi_Driver" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="412" height="90"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uwb-0s-LJK" id="L7D-3F-SbZ">
@@ -2985,7 +2985,7 @@
         <!--Waiting For CustomerVC-->
         <scene sceneID="OjP-Ij-TBp">
             <objects>
-                <viewController storyboardIdentifier="WaitingForCustomerVC" id="Zie-jW-tSQ" customClass="WaitingForCustomerVC" customModule="CabDriver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaitingForCustomerVC" id="Zie-jW-tSQ" customClass="WaitingForCustomerVC" customModule="Taxi_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zdb-Ws-UXI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3205,7 +3205,7 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToMounds" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico_setting" translatesAutoresizingMaskIntoConstraints="NO" id="3Rc-TC-rvU" customClass="imageBorder" customModule="CabDriver" customModuleProvider="target">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_ico_setting" translatesAutoresizingMaskIntoConstraints="NO" id="3Rc-TC-rvU" customClass="imageBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                         <rect key="frame" x="20" y="15" width="70" height="70"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="70" id="OZd-6h-Atj"/>
@@ -3260,7 +3260,7 @@
                                                                     <constraint firstAttribute="trailing" secondItem="b9K-Mw-psn" secondAttribute="trailing" constant="10" id="yDw-FF-Vgd"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwY-0N-21a" customClass="buttonBorder" customModule="CabDriver" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwY-0N-21a" customClass="buttonBorder" customModule="Taxi_Driver" customModuleProvider="target">
                                                                 <rect key="frame" x="352" y="411" width="50" height="50"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>

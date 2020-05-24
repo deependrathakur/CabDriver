@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import  Firebase
 
 class MyMenuVC: UIViewController, UITableViewDelegate,UITableViewDataSource,SWRevealViewControllerDelegate {
     
@@ -155,6 +156,9 @@ extension MyMenuVC{
     
     
     @IBAction func logOutAction(sender: UIButton) {
+        if let id = UserDefaults.standard.string(forKey: "userId") {
+        Firestore.firestore().collection("driver").document(id).updateData(["deviceToken":""])
+        }
         UserDefaults.standard.set(false, forKey: "isLogin")
         UserDefaults.standard.set("", forKey: "userId")
         DictUserDetails = ["":""]

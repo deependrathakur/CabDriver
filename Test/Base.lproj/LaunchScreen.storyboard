@@ -15,15 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="sBV-xw-59m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newIcon" translatesAutoresizingMaskIntoConstraints="NO" id="sBV-xw-59m">
                                 <rect key="frame" x="83" y="234" width="248" height="248.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sBV-xw-59m" secondAttribute="height" multiplier="1:1" id="5Yo-37-q16"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C82" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj9-Ei-v6g">
-                                <rect key="frame" x="0.0" y="492.5" width="414" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gj9-Ei-v6g">
+                                <rect key="frame" x="0.0" y="477.5" width="414" height="46"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="40"/>
                                 <color key="textColor" red="0.68871437823834203" green="0.16300144873923283" blue="0.12967987701357214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -34,7 +34,7 @@
                             <constraint firstItem="sBV-xw-59m" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="DP1-PA-DaM"/>
                             <constraint firstItem="sBV-xw-59m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NRe-kj-B9e"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gj9-Ei-v6g" secondAttribute="trailing" id="bkI-Ip-TZb"/>
-                            <constraint firstItem="gj9-Ei-v6g" firstAttribute="top" secondItem="sBV-xw-59m" secondAttribute="bottom" constant="10" id="dRr-Vx-W0Q"/>
+                            <constraint firstItem="gj9-Ei-v6g" firstAttribute="top" secondItem="sBV-xw-59m" secondAttribute="bottom" constant="-5" id="dRr-Vx-W0Q"/>
                             <constraint firstItem="sBV-xw-59m" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.8" id="h9B-Ta-ePy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="327" height="331"/>
+        <image name="newIcon" width="121.5" height="114"/>
     </resources>
 </document>
