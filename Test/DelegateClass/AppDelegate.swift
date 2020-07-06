@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         // Override point for customization after application launch.
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
+        
         self.configureNotification()
 
        // GMSPlacesClient.provideAPIKey("AIzaSyCFnmNB2nO-SVKE7-SNf-c5_5tcyJ0J0JI")// from my account generated
@@ -175,23 +176,38 @@ extension AppDelegate {
         //      }
         
         // Print full message.
-        let firebaseAuth = Auth.auth()
-
+        Auth.auth().canHandleNotification(userInfo)
         print(userInfo)
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        ////      // Print message ID.
-        //      if let messageID = userInfo[gcmMessageIDKey] {
-        //        print("Message ID: \(messageID)")
-        //      }
-        
-        // Print full message.
-        print(userInfo)
-        
-        completionHandler(UIBackgroundFetchResult.newData)
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(userInfo)
+        {
+            completionHandler(UIBackgroundFetchResult.noData);
+            return
+        }
     }
+
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      if Auth.auth().canHandle(url) {
+        return true
+      }
+        return true
+      // URL not auth related, developer should handle it.
+    }
+
+    // For iOS 8-
+    func application(_ application: UIApplication,
+                     open url: URL,
+                     sourceApplication: String?,
+                     annotation: Any) -> Bool {
+      if Auth.auth().canHandle(url) {
+        return true
+      }
+        return true
+      // URL not auth related, developer should handle it.
+    }
+    
 
     func configureNotification() {
         if #available(iOS 10.0, *) {

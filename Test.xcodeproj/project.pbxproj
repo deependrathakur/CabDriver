@@ -115,7 +115,7 @@
 		EE71EF1D2406DD6200B6028D /* customClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customClass.swift; sourceTree = "<group>"; };
 		EE71EF1F2406E14700B6028D /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		EEA7364F2454975C008A60D3 /* ModelUserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUserDetail.swift; sourceTree = "<group>"; };
-		EED85435240556D900E225EE /* Taxi Driver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Taxi Driver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EED85435240556D900E225EE /* TJ Driver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TJ Driver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED85438240556D900E225EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EED8543A240556D900E225EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EED8543C240556D900E225EE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ../../LoginVC.swift; sourceTree = "<group>"; };
@@ -376,7 +376,7 @@
 		EED85436240556D900E225EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EED85435240556D900E225EE /* Taxi Driver.app */,
+				EED85435240556D900E225EE /* TJ Driver.app */,
 				EED8544B240556E800E225EE /* TestTests.xctest */,
 				EED85456240556E800E225EE /* TestUITests.xctest */,
 			);
@@ -454,7 +454,7 @@
 			);
 			name = Test;
 			productName = Test;
-			productReference = EED85435240556D900E225EE /* Taxi Driver.app */;
+			productReference = EED85435240556D900E225EE /* TJ Driver.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EED8544A240556E800E225EE /* TestTests */ = {
@@ -503,6 +503,9 @@
 		EED8542D240556D900E225EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Deependra;
@@ -933,9 +936,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Deependra.CabDriver;
-				PRODUCT_NAME = "Taxi Driver";
+				PRODUCT_NAME = "TJ Driver";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/harshit/Documents/CabDriver/CabDriver/Test/BridgeHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/rails/Documents/NewCab/CabDriver/Test/BridgeHeader.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -958,9 +961,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Deependra.CabDriver;
-				PRODUCT_NAME = "Taxi Driver";
+				PRODUCT_NAME = "TJ Driver";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/harshit/Documents/CabDriver/CabDriver/Test/BridgeHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/rails/Documents/NewCab/CabDriver/Test/BridgeHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
